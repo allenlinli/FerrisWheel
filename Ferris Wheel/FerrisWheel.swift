@@ -67,13 +67,12 @@ class FerrisWheel: UIControl{
         let touchPoint = touch.locationInView(self)
         let distanceFromCentre = calculateDistanceFromCenter(touchPoint)
         let WheelOutterRadius = CGFloat(130.0)
-        if distanceFromCentre > WheelOutterRadius {
-            return false
-        }
+        if distanceFromCentre > WheelOutterRadius { return false }
         
         startTransform = wheelImageView.transform
         angleOfTouchFromWheelCentre = calculateAngleOfTouchFromWheelCentreWithTouchPoint(touchPoint)
         
+        ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidStartRotate()
         return true
     }
     
@@ -86,11 +85,16 @@ class FerrisWheel: UIControl{
         guard let uStartTransform = startTransform else {  return false }
         wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -angleDifference);
         
+        
         return true
     }
     
     override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
-        
+        ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidFinishRotate()
+    }
+    
+    override func cancelTrackingWithEvent(event: UIEvent?) {
+        ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidFinishRotate()
     }
     
     //>> helper methods
