@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 
+let WheelSize = CGSize(width: 320.0, height: 320.0)
+
 class ViewController: UIViewController, FerrisWheelDelegate {
     var ferrisWheel: FerrisWheel!
     var wheelRotatingSoundPlayer: AVAudioPlayer! = AVAudioPlayer()
@@ -17,10 +19,8 @@ class ViewController: UIViewController, FerrisWheelDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.grayColor()
         
-        let wheelSize = CGSize(width: 320.0, height: 320.0)
-        let wheelFrame = CGRect(x: view.center.x - wheelSize.width/2, y: view.center.y - wheelSize.height/2, width: wheelSize.width, height: wheelSize.height)
+        let wheelFrame = CGRect(x: view.center.x - WheelSize.width/2, y: view.center.y - WheelSize.height/2, width: WheelSize.width, height: WheelSize.height)
         ferrisWheel = FerrisWheel(frame:wheelFrame, delegate: self)
-        ferrisWheel.backgroundColor = UIColor.redColor()
         view.addSubview(ferrisWheel)
         
         //>>setup audio player

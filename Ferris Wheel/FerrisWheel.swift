@@ -16,16 +16,31 @@ protocol FerrisWheelDelegate {
 }
 
 let WheelImageName: String = "wheel"
-
+let CarriageSize = CGSize(width: 50.0 , height: 50.0)
 
 class FerrisWheel: UIControl{
     let wheelImageView: UIImageView!
     let carriages: [Carriage]!
+    
     var ferrisWheelDidFinishRotateDelegate: FerrisWheelDelegate?
-    var wheelCentre: CGPoint! {
+    
+    
+    
+    //for counting degree
+    var carriageCount = 12
+    var eachCarriageAngle: CGFloat {
         get {
-            return wheelImageView.center
+            return 360.0 / CGFloat(carriageCount)
         }
+    }
+    var wheelCentre: CGPoint { get { return wheelImageView.center } }
+    var wheelRadius: CGFloat { get { return wheelImageView.frame.size.width / 2 } }
+    let wheelRadiusIndent = CGFloat(20.0)
+    var radius: CGFloat { get { return wheelRadius - wheelRadiusIndent} }
+    func calculatePointFromRadiusFromWheelCentreWithRadian(radian: CGFloat) -> CGPoint {
+        let dxFromWheelCentre = CGFloat(radius) * cos(radian)
+        let dyFromWheelCentre = CGFloat(radius) * sin(radian)
+        return CGPoint(x:wheelCentre.x + dxFromWheelCentre, y: wheelCentre.y + dyFromWheelCentre)
     }
     
     //>> for rotating
@@ -40,7 +55,7 @@ class FerrisWheel: UIControl{
         //>> setup carriages
         var tempCarriages: [Carriage] = []
         for type: CarriageType in CarriageType.allValues {
-            let carriage: Carriage = Carriage(frame: CGRect(x: 0.0,y: 0.0,width: 50.0,height: 50.0), type: type)
+            let carriage: Carriage = Carriage(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CarriageSize), type: type)
             tempCarriages.append(carriage)
         }
         carriages = tempCarriages
@@ -50,20 +65,10 @@ class FerrisWheel: UIControl{
         addSubview(wheelImageView)
         
         //>> calculate carriages positions
-        let carriageCount = 12
-        let eachCarriageAngle = 360.0 / CGFloat(carriageCount)
-        let wheelRadius = wheelImageView.frame.size.width / 2
-        let wheelRadiusIndent = CGFloat(20.0)
-        
-        let radius = wheelRadius - wheelRadiusIndent
-        
         for (index, carriage) in carriages.enumerate() {
             let radian = CGFloat(index) * eachCarriageAngle / 180.0 * CGFloat(M_PI)
-            let dxFromWheelCentre = CGFloat(radius) * cos(radian)
-            let dyFromWheelCentre = CGFloat(radius) * sin(radian)
-            let carriageCentre = CGPoint(x:wheelCentre.x + dxFromWheelCentre, y: wheelCentre.y + dyFromWheelCentre)
-            carriage.center = carriageCentre
-            wheelImageView.addSubview(carriage)
+            carriage.center = calculatePointFromRadiusFromWheelCentreWithRadian(radian)
+            wheelImageView.superview?.addSubview(carriage)
         }
     }
     
@@ -99,6 +104,10 @@ class FerrisWheel: UIControl{
         guard let uStartTransform = startTransform else {  return false }
         wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -angleDifference);
         
+        for (index, carriage) in carriages.enumerate() {
+            let radian = CGFloat(index) * eachCarriageAngle / 180.0 * CGFloat(M_PI)
+            carriage.center = calculatePointFromRadiusFromWheelCentreWithRadian(radian)
+        }
         
         return true
     }
