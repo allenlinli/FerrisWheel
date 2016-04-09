@@ -22,7 +22,7 @@ class FerrisWheel: UIControl{
     let wheelImageView: UIImageView!
     let carriages: [Carriage]!
     var ferrisWheelDidFinishRotateDelegate: FerrisWheelDelegate?
-    var centre: CGPoint! {
+    var wheelCentre: CGPoint! {
         get {
             return wheelImageView.center
         }
@@ -33,24 +33,38 @@ class FerrisWheel: UIControl{
     var angleOfTouchFromWheelCentre: CGFloat?
     
     override init(frame: CGRect) {
+        //>> setup wheelImageView
+        let wheelImage = UIImage(named: WheelImageName)
+        wheelImageView = UIImageView(image:wheelImage)
         
         //>> setup carriages
         var tempCarriages: [Carriage] = []
         for type: CarriageType in CarriageType.allValues {
-            let carriage: Carriage = Carriage(type: type)
+            let carriage: Carriage = Carriage(frame: CGRect(x: 0.0,y: 0.0,width: 50.0,height: 50.0), type: type)
             tempCarriages.append(carriage)
         }
         carriages = tempCarriages
-        
-        //>> setup wheelImageView
-        let wheelImage = UIImage(named: WheelImageName)
-        wheelImageView = UIImageView(image:wheelImage)
         
         super.init(frame: frame)
         
         addSubview(wheelImageView)
         
-        wheelImageView.center = self.center
+        //>> calculate carriages positions
+        let carriageCount = 12
+        let eachCarriageAngle = 360.0 / CGFloat(carriageCount)
+        let wheelRadius = wheelImageView.frame.size.width / 2
+        let wheelRadiusIndent = CGFloat(20.0)
+        
+        let radius = wheelRadius - wheelRadiusIndent
+        
+        for (index, carriage) in carriages.enumerate() {
+            let radian = CGFloat(index) * eachCarriageAngle / 180.0 * CGFloat(M_PI)
+            let dxFromWheelCentre = CGFloat(radius) * cos(radian)
+            let dyFromWheelCentre = CGFloat(radius) * sin(radian)
+            let carriageCentre = CGPoint(x:wheelCentre.x + dxFromWheelCentre, y: wheelCentre.y + dyFromWheelCentre)
+            carriage.center = carriageCentre
+            wheelImageView.addSubview(carriage)
+        }
     }
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
@@ -99,17 +113,22 @@ class FerrisWheel: UIControl{
     
     //>> helper methods
     func calculateDistanceFromCenter(point: CGPoint) -> CGFloat {
-        let dx = point.x - centre.x
-        let dy = point.y - centre.y
+        let dx = point.x - wheelCentre.x
+        let dy = point.y - wheelCentre.y
         return sqrt(dx*dx + dy*dy)
     }
     
     func calculateAngleOfTouchFromWheelCentreWithTouchPoint(point: CGPoint)-> CGFloat! {
-        let dx = point.x - centre.x
-        let dy = centre.y - point.y
+        let dx = point.x - wheelCentre.x
+        let dy = wheelCentre.y - point.y
     
         return atan2(dy,dx)
     }
+}
+
+extension Double {
+    var degreesToRadians: Double { return self * M_PI / 180 }
+    var radiansToDegrees: Double { return self * 180 / M_PI }
 }
 
 

@@ -60,19 +60,30 @@ public enum CarriageType {
     public static let allValues = [Rides, Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn]
 }
 
-public class Carriage {
-    let type: CarriageType!
-    let carriageImageView: UIImageView!
+public class Carriage: UIControl{
+    var type: CarriageType!
+    var carriageImageView: UIImageView!
     var carriageTitle: String! {
         get {
             return type.getCarriageTitle()
         }
     }
     
-    init(type: CarriageType) {
+    init(frame: CGRect, type: CarriageType) {
         self.type = type
         
         let carriageImage = UIImage(named:type.getCarriageImageName())
         carriageImageView = UIImageView(image: carriageImage)
+
+        super.init(frame: frame)
+        addSubview(carriageImageView)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
