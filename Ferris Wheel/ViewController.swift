@@ -12,7 +12,7 @@ class ViewController: UIViewController, FerrisWheelDelegate {
     var ferrisWheel: FerrisWheel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(view.center)
         ferrisWheel = FerrisWheel(frame: view.frame, delegate: self)
         view.addSubview(ferrisWheel)
     }

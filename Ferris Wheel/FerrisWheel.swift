@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreGraphics
 
 protocol FerrisWheelDelegate {
     func ferrisWheelDidStartRotate()
@@ -72,7 +73,8 @@ class FerrisWheel: UIControl{
         
         startTransform = wheelImageView.transform
         angleOfTouchFromWheelCentre = calculateDistanceFromCenter(touchPoint)
-        
+        print(startTransform)
+        print(angleOfTouchFromWheelCentre)
         return true
     }
     
