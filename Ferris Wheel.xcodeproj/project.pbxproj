@@ -42,6 +42,7 @@
 		E9BD640A1CB6A44100DBB347 /* ferriswheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */; };
 		E9BD640D1CB6A46E00DBB347 /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640B1CB6A46E00DBB347 /* wheel.png */; };
 		E9BD640E1CB6A46E00DBB347 /* wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */; };
+		E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ferriswheel.mp3; sourceTree = "<group>"; };
 		E9BD640B1CB6A46E00DBB347 /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheel.png; sourceTree = "<group>"; };
 		E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheel@2x.png"; sourceTree = "<group>"; };
+		E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FerrisWheel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				E9BD64071CB6A42900DBB347 /* Media */,
 				E92A88C41CB60B98003BB46A /* AppDelegate.swift */,
 				E92A88C61CB60B98003BB46A /* ViewController.swift */,
+				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
 				E92A88DA1CB68723003BB46A /* Carriage.swift */,
 				E92A88C81CB60B98003BB46A /* Main.storyboard */,
 				E92A88CB1CB60B98003BB46A /* Assets.xcassets */,
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */,
 				E92A88C71CB60B98003BB46A /* ViewController.swift in Sources */,
 				E92A88C51CB60B98003BB46A /* AppDelegate.swift in Sources */,
 				E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */,

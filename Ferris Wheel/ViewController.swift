@@ -8,13 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-//    var ferrisWheel: FerrisWheel!
+class ViewController: UIViewController, FerrisWheelDelegate {
+    var ferrisWheel: FerrisWheel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.ferrisWheel = FerrisWheel(ferris)
+        ferrisWheel = FerrisWheel(frame: view.frame, delegate: self)
+        view.addSubview(ferrisWheel)
     }
 
+    
+    func ferrisWheelDidStartRotate(){
+        
+    }
+    
+    func ferrisWheelDidFinishRotate(){
+        
+    }
 }
 
