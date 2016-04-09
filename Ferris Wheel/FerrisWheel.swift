@@ -72,9 +72,8 @@ class FerrisWheel: UIControl{
         }
         
         startTransform = wheelImageView.transform
-        angleOfTouchFromWheelCentre = calculateDistanceFromCenter(touchPoint)
-        print(startTransform)
-        print(angleOfTouchFromWheelCentre)
+        angleOfTouchFromWheelCentre = calculateAngleOfTouchFromWheelCentreWithTouchPoint(touchPoint)
+        
         return true
     }
     
@@ -82,7 +81,7 @@ class FerrisWheel: UIControl{
         let touchPoint = touch.locationInView(self)
         
         guard let uAngleOfTouchFromWheelCentre = angleOfTouchFromWheelCentre else { return false }
-        let angleDifference = calculateDistanceFromCenter(touchPoint) - uAngleOfTouchFromWheelCentre
+        let angleDifference = calculateAngleOfTouchFromWheelCentreWithTouchPoint(touchPoint) - uAngleOfTouchFromWheelCentre
         
         guard let uStartTransform = startTransform else {  return false }
         wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -angleDifference);
@@ -103,7 +102,8 @@ class FerrisWheel: UIControl{
     
     func calculateAngleOfTouchFromWheelCentreWithTouchPoint(point: CGPoint)-> CGFloat! {
         let dx = point.x - centre.x
-        let dy = point.y - centre.y
+        let dy = centre.y - point.y
+    
         return atan2(dy,dx)
     }
 }
