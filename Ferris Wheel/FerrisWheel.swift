@@ -43,7 +43,7 @@ class FerrisWheel: UIControl{
     
     //>> for rotating of wheel
     var startTransform: CGAffineTransform?
-    var angleOfTouchFromWheelCentre: CGFloat?
+    var radianOfTouchFromWheelCentre: CGFloat?
     
     override init(frame: CGRect) {
         //>> setup wheelImageView
@@ -90,7 +90,7 @@ class FerrisWheel: UIControl{
         if distanceFromCentre > WheelOutterRadius { return false }
         
         startTransform = wheelImageView.transform
-        angleOfTouchFromWheelCentre = calculateAngleOfTouchFromWheelCentreWithTouchPoint(touchPoint)
+        radianOfTouchFromWheelCentre = calculateRadianOfTouchFromWheelCentreWithTouchPoint(touchPoint)
         
         ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidStartRotate()
         return true
@@ -99,11 +99,11 @@ class FerrisWheel: UIControl{
     override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
         let touchPoint = touch.locationInView(self)
         
-        guard let uAngleOfTouchFromWheelCentre = angleOfTouchFromWheelCentre else { return false }
-        let angleDifference = calculateAngleOfTouchFromWheelCentreWithTouchPoint(touchPoint) - uAngleOfTouchFromWheelCentre
+        guard let uRadianOfTouchFromWheelCentre = radianOfTouchFromWheelCentre else { return false }
+        let radianDifference = calculateRadianOfTouchFromWheelCentreWithTouchPoint(touchPoint) - uRadianOfTouchFromWheelCentre
         
         guard let uStartTransform = startTransform else {  return false }
-        wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -angleDifference);
+        wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -radianDifference);
         
         for (index, carriage) in carriages.enumerate() {
             let radian = CGFloat(index) * eachCarriageAngle / 180.0 * CGFloat(M_PI)
@@ -128,7 +128,7 @@ class FerrisWheel: UIControl{
         return sqrt(dx*dx + dy*dy)
     }
     
-    func calculateAngleOfTouchFromWheelCentreWithTouchPoint(point: CGPoint)-> CGFloat! {
+    func calculateRadianOfTouchFromWheelCentreWithTouchPoint(point: CGPoint)-> CGFloat! {
         let dx = point.x - wheelCentre.x
         let dy = wheelCentre.y - point.y
     
