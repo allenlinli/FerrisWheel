@@ -31,14 +31,14 @@ class FerrisWheel: UIControl{
             return 360.0 / CGFloat(carriageCount)
         }
     }
-    var wheelCentre: CGPoint { get { return wheelImageView.center } }
+    var wheelImageViewCentre: CGPoint { get { return wheelImageView.center } }
     var wheelRadius: CGFloat { get { return wheelImageView.frame.size.width / 2 } }
-    let wheelRadiusIndent = CGFloat(25.0)
-    var radius: CGFloat { get { return wheelRadius - wheelRadiusIndent} }
+    let WheelRadiusIndent = CGFloat(25.0)
+    var radius: CGFloat { get { return wheelRadius - WheelRadiusIndent} }
     func calculatePointFromRadiusFromWheelCentreWithRadian(radian: CGFloat) -> CGPoint {
         let dxFromWheelCentre = CGFloat(radius) * cos(radian)
         let dyFromWheelCentre = CGFloat(radius) * sin(radian)
-        return CGPoint(x:wheelCentre.x + dxFromWheelCentre, y: wheelCentre.y + dyFromWheelCentre)
+        return CGPoint(x:wheelImageViewCentre.x + dxFromWheelCentre, y: wheelImageViewCentre.y + dyFromWheelCentre)
     }
     
     //>> for rotating of wheel
@@ -68,9 +68,14 @@ class FerrisWheel: UIControl{
             carriage.center = calculatePointFromRadiusFromWheelCentreWithRadian(radian)
             wheelImageView.superview?.addSubview(carriage)
         }
+        
+/*        >> for testing
+ */
+//        wheelImageView.backgroundColor = UIColor.redColor()
+//        backgroundColor = UIColor.greenColor()
     }
     
-    //>> for rotating of carriage
+    // MARK: for rotating of carriage
     
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
@@ -82,7 +87,7 @@ class FerrisWheel: UIControl{
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // MARK: UIControl Delegates
     override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
         let touchPoint = touch.locationInView(self)
         let distanceFromCentre = calculateDistanceFromCenter(touchPoint)
@@ -121,24 +126,18 @@ class FerrisWheel: UIControl{
         ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidFinishRotate()
     }
     
-    //>> helper methods
+    // MARK: helper methods
     func calculateDistanceFromCenter(point: CGPoint) -> CGFloat {
-        let dx = point.x - wheelCentre.x
-        let dy = point.y - wheelCentre.y
-        return sqrt(dx*dx + dy*dy)
+        return calculateDistanceWith(point, point2: wheelImageViewCentre)
     }
     
-    func calculateRadianOfTouchFromWheelCentreWithTouchPoint(point: CGPoint)-> CGFloat! {
-        let dx = point.x - wheelCentre.x
-        let dy = wheelCentre.y - point.y
+    func calculateRadianOfTouchFromWheelCentreWithTouchPoint(point: CGPoint) -> CGFloat! {
+        let dx = point.x - wheelImageViewCentre.x
+        let dy = wheelImageViewCentre.y - point.y
     
         return atan2(dy,dx)
     }
 }
 
-extension Double {
-    var degreesToRadians: Double { return self * M_PI / 180 }
-    var radiansToDegrees: Double { return self * 180 / M_PI }
-}
 
 

@@ -17,11 +17,13 @@ class ViewController: UIViewController, FerrisWheelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.grayColor()
+        view.backgroundColor = UIColor(red: 105.0/255.0, green: 122.0/255.0, blue: 138.0/255.0, alpha: 1)
         
         let wheelFrame = CGRect(x: view.center.x - WheelSize.width/2, y: view.center.y - WheelSize.height/2, width: WheelSize.width, height: WheelSize.height)
         ferrisWheel = FerrisWheel(frame:wheelFrame, delegate: self)
         view.addSubview(ferrisWheel)
+        
+        assert(ferrisWheel.frame == CGRect(x: 0.0,y: 80.0,width: 320.0,height: 320.0),"wheelFrame:\(wheelFrame)")
         
         //>>setup audio player
         let path = NSBundle.mainBundle().pathForResource("ferriswheel", ofType:"mp3")!

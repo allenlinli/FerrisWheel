@@ -57,7 +57,7 @@ public enum CarriageType {
         }
     }
     
-    public static let allValues = [Rides, Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn]
+    public static let allValues = [Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn,Rides]
 }
 
 
@@ -77,13 +77,12 @@ public class Carriage: UIControl{
         titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0,y: frame.height-4), size: TitleLabelSize))
         titleLabel.backgroundColor = UIColor.blackColor()
         titleLabel.text = type.getCarriageTitle()
-        titleLabel.textColor = UIColor(red: 125, green: 125, blue: 125, alpha: 1)
+        titleLabel.textColor = UIColor(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 1)
         titleLabel.font = UIFont.systemFontOfSize(8.0, weight: TitleLabelSize.width)
         titleLabel.textAlignment = NSTextAlignment.Center
         
         super.init(frame: frame)
         addSubview(carriageImageView)
-        print("carriageImageView:\(carriageImageView)")
         carriageImageView.addSubview(titleLabel)
     }
     
