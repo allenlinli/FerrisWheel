@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum CarriageType {
+public enum CarriageType {
     case Rides
     case Showbags
     case Plan
@@ -23,83 +23,74 @@ enum CarriageType {
     case Maps
     case WhatsOn
     
-    func getCarriageTitle() -> CarriageTitle {
+    public func getCarriageTitle() -> String {
         switch self {
-        case Rides: return CarriageTitle.Rides
-        case Showbags: return CarriageTitle.Showbags
-        case Plan: return CarriageTitle.Plan
-        case FoodDrink: return CarriageTitle.FoodDrink
-        case Shopping: return CarriageTitle.Shopping
-        case LifeStyle: return CarriageTitle.LifeStyle
-        case Tickets: return CarriageTitle.Tickets
-        case Search: return CarriageTitle.Search
-        case Info: return CarriageTitle.Info
-        case Win: return CarriageTitle.Win
-        case Maps: return CarriageTitle.Maps
-        case WhatsOn: return CarriageTitle.WhatsOn
+        case Rides: return "Rides"
+        case Showbags: return "Showbags"
+        case Plan: return "Plan"
+        case FoodDrink: return "Food & Drink"
+        case Shopping: return "Shopping"
+        case LifeStyle: return "LifeStyle"
+        case Tickets: return "Tickets"
+        case Search: return "Search"
+        case Info: return "Info"
+        case Win: return "Win"
+        case Maps: return "Maps"
+        case WhatsOn: return "What's On"
         }
     }
     
-    func getCarriageImageName() -> CarriageImageName {
+    func getCarriageImageName() -> String {
         switch self {
-            case Rides: return CarriageImageName.Rides
-            case Showbags: return CarriageImageName.Showbags
-            case Plan: return CarriageImageName.Plan
-            case FoodDrink: return CarriageImageName.FoodDrink
-            case Shopping: return CarriageImageName.Shopping
-            case LifeStyle: return CarriageImageName.LifeStyle
-            case Tickets: return CarriageImageName.Tickets
-            case Search: return CarriageImageName.Search
-            case Info: return CarriageImageName.Info
-            case Win: return CarriageImageName.Win
-            case Maps: return CarriageImageName.Maps
-            case WhatsOn: return CarriageImageName.WhatsOn
+        case Rides: return "Rides"
+        case Showbags: return "Showbags"
+        case Plan: return "Plan"
+        case FoodDrink: return "FoodDrink"
+        case Shopping: return "Shopping"
+        case LifeStyle: return "Shows"
+        case Tickets: return "Tickets"
+        case Search: return "Search"
+        case Info: return "About"
+        case Win: return "Win"
+        case Maps: return "Maps"
+        case WhatsOn: return "Program"
         }
     }
-}
-
-enum CarriageTitle : String {
-    case Rides = "Rides"
-    case Showbags = "Showbags"
-    case Plan = "Plan"
-    case FoodDrink = "Food & Drink"
-    case Shopping = "Shopping"
-    case LifeStyle = "LifeStyle"
-    case Tickets = "Tickets"
-    case Search = "Search"
-    case Info = "Info"
-    case Win = "Win"
-    case Maps = "Maps"
-    case WhatsOn = "What's On"
-}
-
-enum CarriageImageName : String {
-    case Rides = "Rides"
-    case Showbags = "Showbags"
-    case Plan = "Plan"
-    case FoodDrink = "FoodDrink"
-    case Shopping = "Shopping"
-    case LifeStyle = "Shows"
-    case Tickets = "Tickets"
-    case Search = "Search"
-    case Info = "About"
-    case Win = "Win"
-    case Maps = "Maps"
-    case WhatsOn = "Program"
-}
-
-class Carriage {
-    let type: CarriageType!
-    let carriageImageView: UIImageView!
-    let carriageTitle: CarriageTitle!
     
-    init(type: CarriageType) {
+    public static let allValues = [Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn,Rides]
+}
+
+
+
+public class Carriage: UIControl{
+    var type: CarriageType!
+    var carriageImageView: UIImageView!
+
+    var titleLabel: UILabel!
+    let TitleLabelSize = CGSize(width: 50, height: 10)
+    
+    init(frame: CGRect, type: CarriageType) {
         self.type = type
         
-        let carriageImage = UIImage(named:type.getCarriageImageName().rawValue)
+        let carriageImage = UIImage(named:type.getCarriageImageName())
         carriageImageView = UIImageView(image: carriageImage)
+        titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0,y: frame.height-4), size: TitleLabelSize))
+        titleLabel.backgroundColor = UIColor.blackColor()
+        titleLabel.text = type.getCarriageTitle()
+        titleLabel.textColor = UIColor(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 1)
+        titleLabel.font = UIFont.systemFontOfSize(8.0, weight: TitleLabelSize.width)
+        titleLabel.textAlignment = NSTextAlignment.Center
         
-        carriageTitle = type.getCarriageTitle()
-        
+        super.init(frame: frame)
+        addSubview(carriageImageView)
+        carriageImageView.addSubview(titleLabel)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

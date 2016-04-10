@@ -42,7 +42,21 @@
 		E9BD640A1CB6A44100DBB347 /* ferriswheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */; };
 		E9BD640D1CB6A46E00DBB347 /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640B1CB6A46E00DBB347 /* wheel.png */; };
 		E9BD640E1CB6A46E00DBB347 /* wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */; };
+		E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */; };
+		E9FB81DC1CB953C400445770 /* Ferris_WheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */; };
+		E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82871CBA907E00445770 /* Double+Radian.swift */; };
+		E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB828A1CBA92F400445770 /* HelperMethods.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E9FB81DE1CB953C400445770 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E92A88B91CB60B97003BB46A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E92A88C01CB60B97003BB46A;
+			remoteInfo = "Ferris Wheel";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E92A88C11CB60B98003BB46A /* Ferris Wheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ferris Wheel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,10 +96,23 @@
 		E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ferriswheel.mp3; sourceTree = "<group>"; };
 		E9BD640B1CB6A46E00DBB347 /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheel.png; sourceTree = "<group>"; };
 		E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheel@2x.png"; sourceTree = "<group>"; };
+		E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FerrisWheel.swift; sourceTree = "<group>"; };
+		E9FB81D91CB953C400445770 /* Ferris WheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ferris WheelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ferris_WheelTests.swift; sourceTree = "<group>"; };
+		E9FB81DD1CB953C400445770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9FB82871CBA907E00445770 /* Double+Radian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Radian.swift"; sourceTree = "<group>"; };
+		E9FB828A1CBA92F400445770 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E92A88BE1CB60B97003BB46A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9FB81D61CB953C400445770 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -99,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E92A88C31CB60B98003BB46A /* Ferris Wheel */,
+				E9FB81DA1CB953C400445770 /* Ferris WheelTests */,
 				E92A88C21CB60B98003BB46A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E92A88C11CB60B98003BB46A /* Ferris Wheel.app */,
+				E9FB81D91CB953C400445770 /* Ferris WheelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,9 +143,11 @@
 		E92A88C31CB60B98003BB46A /* Ferris Wheel */ = {
 			isa = PBXGroup;
 			children = (
+				E9FB82891CBA928000445770 /* Helper Methods */,
 				E9BD64071CB6A42900DBB347 /* Media */,
 				E92A88C41CB60B98003BB46A /* AppDelegate.swift */,
 				E92A88C61CB60B98003BB46A /* ViewController.swift */,
+				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
 				E92A88DA1CB68723003BB46A /* Carriage.swift */,
 				E92A88C81CB60B98003BB46A /* Main.storyboard */,
 				E92A88CB1CB60B98003BB46A /* Assets.xcassets */,
@@ -186,6 +217,24 @@
 			name = Audio;
 			sourceTree = "<group>";
 		};
+		E9FB81DA1CB953C400445770 /* Ferris WheelTests */ = {
+			isa = PBXGroup;
+			children = (
+				E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */,
+				E9FB81DD1CB953C400445770 /* Info.plist */,
+			);
+			path = "Ferris WheelTests";
+			sourceTree = "<group>";
+		};
+		E9FB82891CBA928000445770 /* Helper Methods */ = {
+			isa = PBXGroup;
+			children = (
+				E9FB82871CBA907E00445770 /* Double+Radian.swift */,
+				E9FB828A1CBA92F400445770 /* HelperMethods.swift */,
+			);
+			name = "Helper Methods";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,6 +255,24 @@
 			productReference = E92A88C11CB60B98003BB46A /* Ferris Wheel.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E9FB81D81CB953C400445770 /* Ferris WheelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9FB81E01CB953C400445770 /* Build configuration list for PBXNativeTarget "Ferris WheelTests" */;
+			buildPhases = (
+				E9FB81D51CB953C400445770 /* Sources */,
+				E9FB81D61CB953C400445770 /* Frameworks */,
+				E9FB81D71CB953C400445770 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E9FB81DF1CB953C400445770 /* PBXTargetDependency */,
+			);
+			name = "Ferris WheelTests";
+			productName = "Ferris WheelTests";
+			productReference = E9FB81D91CB953C400445770 /* Ferris WheelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -218,6 +285,10 @@
 				TargetAttributes = {
 					E92A88C01CB60B97003BB46A = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					E9FB81D81CB953C400445770 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = E92A88C01CB60B97003BB46A;
 					};
 				};
 			};
@@ -235,6 +306,7 @@
 			projectRoot = "";
 			targets = (
 				E92A88C01CB60B97003BB46A /* Ferris Wheel */,
+				E9FB81D81CB953C400445770 /* Ferris WheelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -279,6 +351,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E9FB81D71CB953C400445770 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -286,13 +365,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */,
+				E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */,
+				E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */,
 				E92A88C71CB60B98003BB46A /* ViewController.swift in Sources */,
 				E92A88C51CB60B98003BB46A /* AppDelegate.swift in Sources */,
 				E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E9FB81D51CB953C400445770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9FB81DC1CB953C400445770 /* Ferris_WheelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E9FB81DF1CB953C400445770 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E92A88C01CB60B97003BB46A /* Ferris Wheel */;
+			targetProxy = E9FB81DE1CB953C400445770 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E92A88C81CB60B98003BB46A /* Main.storyboard */ = {
@@ -419,6 +517,30 @@
 			};
 			name = Release;
 		};
+		E9FB81E11CB953C400445770 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Ferris WheelTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "allenlinli.Ferris-WheelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ferris Wheel.app/Ferris Wheel";
+			};
+			name = Debug;
+		};
+		E9FB81E21CB953C400445770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Ferris WheelTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "allenlinli.Ferris-WheelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ferris Wheel.app/Ferris Wheel";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -436,6 +558,15 @@
 			buildConfigurations = (
 				E92A88D41CB60B98003BB46A /* Debug */,
 				E92A88D51CB60B98003BB46A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9FB81E01CB953C400445770 /* Build configuration list for PBXNativeTarget "Ferris WheelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9FB81E11CB953C400445770 /* Debug */,
+				E9FB81E21CB953C400445770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
