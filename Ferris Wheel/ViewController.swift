@@ -50,8 +50,8 @@ class ViewController: UIViewController, FerrisWheelDelegate, CarriageDelegate {
     }
     
     func carriageDidTapped() {
-//        let vc = NextViewController()
-        view.backgroundColor = UIColor.brownColor()
+        let vc = NextViewController()
+        
     }
 }
 

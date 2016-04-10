@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-protocol FerrisWheelDelegate {
+protocol FerrisWheelDelegate: class {
     func ferrisWheelDidStartRotate()
     func ferrisWheelDidFinishRotate()
 }
@@ -22,7 +22,7 @@ class FerrisWheel: UIControl{
     let wheelImageView: UIImageView!
     let carriages: [Carriage]!
     
-    var ferrisWheelDidFinishRotateDelegate: FerrisWheelDelegate?
+    weak var ferrisWheelDidFinishRotateDelegate: FerrisWheelDelegate?
     
     // MARK: for counting degree
     var carriageCount = 12
@@ -63,13 +63,26 @@ class FerrisWheel: UIControl{
         super.init(frame: frame)
         
         addSubview(wheelImageView)
-        
         placeCarriages()
+        sendSubviewToBack(wheelImageView)
+        
+        /* for debug  */
+//        backgroundColor = UIColor.greenColor()
+//        wheelImageView.backgroundColor = UIColor.brownColor()
     }
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
         self.init(frame: frame)
         ferrisWheelDidFinishRotateDelegate = delegate
+        
+        assert(ferrisWheelDidFinishRotateDelegate != nil, "ferrisWheelDidFinishRotateDelegate == nil")
+        for tCarriage in carriages {
+            tCarriage.backgroundColor = UIColor.redColor()
+            guard let delegate = ferrisWheelDidFinishRotateDelegate as? CarriageDelegate else{
+                fatalError("no CarriageDelegate")
+            }
+            tCarriage.delegate = delegate
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -100,7 +113,6 @@ class FerrisWheel: UIControl{
         wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -radianDifference);
         
         placeCarriagesWithRadianDifference(radianDifference)
-        
         return true
     }
     
