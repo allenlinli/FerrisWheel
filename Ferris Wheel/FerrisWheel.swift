@@ -24,9 +24,7 @@ class FerrisWheel: UIControl{
     
     var ferrisWheelDidFinishRotateDelegate: FerrisWheelDelegate?
     
-    
-    
-    //for counting degree
+    //>> for counting degree
     var carriageCount = 12
     var eachCarriageAngle: CGFloat {
         get {
@@ -35,7 +33,7 @@ class FerrisWheel: UIControl{
     }
     var wheelCentre: CGPoint { get { return wheelImageView.center } }
     var wheelRadius: CGFloat { get { return wheelImageView.frame.size.width / 2 } }
-    let wheelRadiusIndent = CGFloat(20.0)
+    let wheelRadiusIndent = CGFloat(25.0)
     var radius: CGFloat { get { return wheelRadius - wheelRadiusIndent} }
     func calculatePointFromRadiusFromWheelCentreWithRadian(radian: CGFloat) -> CGPoint {
         let dxFromWheelCentre = CGFloat(radius) * cos(radian)
@@ -43,7 +41,7 @@ class FerrisWheel: UIControl{
         return CGPoint(x:wheelCentre.x + dxFromWheelCentre, y: wheelCentre.y + dyFromWheelCentre)
     }
     
-    //>> for rotating
+    //>> for rotating of wheel
     var startTransform: CGAffineTransform?
     var angleOfTouchFromWheelCentre: CGFloat?
     
@@ -71,6 +69,9 @@ class FerrisWheel: UIControl{
             wheelImageView.superview?.addSubview(carriage)
         }
     }
+    
+    //>> for rotating of carriage
+    
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
         self.init(frame: frame)

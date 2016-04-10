@@ -60,23 +60,31 @@ public enum CarriageType {
     public static let allValues = [Rides, Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn]
 }
 
+
+
 public class Carriage: UIControl{
     var type: CarriageType!
     var carriageImageView: UIImageView!
-    var carriageTitle: String! {
-        get {
-            return type.getCarriageTitle()
-        }
-    }
+
+    var titleLabel: UILabel!
+    let TitleLabelSize = CGSize(width: 50, height: 10)
     
     init(frame: CGRect, type: CarriageType) {
         self.type = type
         
         let carriageImage = UIImage(named:type.getCarriageImageName())
         carriageImageView = UIImageView(image: carriageImage)
-
+        titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0,y: frame.height-4), size: TitleLabelSize))
+        titleLabel.backgroundColor = UIColor.blackColor()
+        titleLabel.text = type.getCarriageTitle()
+        titleLabel.textColor = UIColor(red: 125, green: 125, blue: 125, alpha: 1)
+        titleLabel.font = UIFont.systemFontOfSize(8.0, weight: TitleLabelSize.width)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        
         super.init(frame: frame)
         addSubview(carriageImageView)
+        print("carriageImageView:\(carriageImageView)")
+        carriageImageView.addSubview(titleLabel)
     }
     
     override init(frame: CGRect) {
