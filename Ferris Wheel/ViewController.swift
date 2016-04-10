@@ -11,7 +11,7 @@ import AVFoundation
 
 let WheelSize = CGSize(width: 320.0, height: 320.0)
 
-class ViewController: UIViewController, FerrisWheelDelegate {
+class ViewController: UIViewController, FerrisWheelDelegate, CarriageDelegate {
     var ferrisWheel: FerrisWheel!
     var wheelRotatingSoundPlayer: AVAudioPlayer! = AVAudioPlayer()
     
@@ -47,6 +47,11 @@ class ViewController: UIViewController, FerrisWheelDelegate {
     
     func ferrisWheelDidFinishRotate(){
         wheelRotatingSoundPlayer.pause()
+    }
+    
+    func carriageDidTapped() {
+//        let vc = NextViewController()
+        view.backgroundColor = UIColor.brownColor()
     }
 }
 

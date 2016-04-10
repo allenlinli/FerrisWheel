@@ -60,7 +60,9 @@ public enum CarriageType {
     public static let allValues = [Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn,Rides]
 }
 
-
+protocol CarriageDelegate {
+    func carriageDidTapped()
+}
 
 public class Carriage: UIControl{
     var type: CarriageType!

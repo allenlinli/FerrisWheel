@@ -47,6 +47,8 @@ class FerrisWheel: UIControl{
     var carriagesCentres: [CGPoint]!
     let InitialRadianOffset: CGFloat = 0.39
     
+    
+    // MARK: init functions
     override init(frame: CGRect) {
         //>> setup wheelImageView
         let wheelImage = UIImage(named: WheelImageName)
@@ -54,25 +56,16 @@ class FerrisWheel: UIControl{
         wheelRadius = wheelImageView.frame.size.width / 2
         
         //>> setup carriages
-        var tempCarriages: [Carriage] = []
-        for type: CarriageType in CarriageType.allValues {
-            let carriage: Carriage = Carriage(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CarriageSize), type: type)
-            tempCarriages.append(carriage)
+        self.carriages = CarriageType.allValues.map { (type) -> Carriage in
+            return Carriage(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CarriageSize), type: type)
         }
-        carriages = tempCarriages
         
         super.init(frame: frame)
         
         addSubview(wheelImageView)
         
         placeCarriages()
-        
-/*        >> for testing
- */
-//        wheelImageView.backgroundColor = UIColor.redColor()
-//        backgroundColor = UIColor.greenColor()
     }
-    
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
         self.init(frame: frame)

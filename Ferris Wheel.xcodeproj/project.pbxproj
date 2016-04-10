@@ -46,6 +46,7 @@
 		E9FB81DC1CB953C400445770 /* Ferris_WheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */; };
 		E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82871CBA907E00445770 /* Double+Radian.swift */; };
 		E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB828A1CBA92F400445770 /* HelperMethods.swift */; };
+		E9FB828D1CBAB12400445770 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB828C1CBAB12400445770 /* NextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		E9FB81DD1CB953C400445770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FB82871CBA907E00445770 /* Double+Radian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Radian.swift"; sourceTree = "<group>"; };
 		E9FB828A1CBA92F400445770 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
+		E9FB828C1CBAB12400445770 /* NextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				E9BD64071CB6A42900DBB347 /* Media */,
 				E92A88C41CB60B98003BB46A /* AppDelegate.swift */,
 				E92A88C61CB60B98003BB46A /* ViewController.swift */,
+				E9FB828C1CBAB12400445770 /* NextViewController.swift */,
 				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
 				E92A88DA1CB68723003BB46A /* Carriage.swift */,
 				E92A88C81CB60B98003BB46A /* Main.storyboard */,
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */,
+				E9FB828D1CBAB12400445770 /* NextViewController.swift in Sources */,
 				E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */,
 				E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */,
 				E92A88C71CB60B98003BB46A /* ViewController.swift in Sources */,
