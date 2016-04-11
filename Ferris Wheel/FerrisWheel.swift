@@ -77,7 +77,6 @@ class FerrisWheel: UIControl{
         
         assert(ferrisWheelDidFinishRotateDelegate != nil, "ferrisWheelDidFinishRotateDelegate == nil")
         for tCarriage in carriages {
-            tCarriage.backgroundColor = UIColor.redColor()
             guard let delegate = ferrisWheelDidFinishRotateDelegate as? CarriageDelegate else{
                 fatalError("no CarriageDelegate")
             }

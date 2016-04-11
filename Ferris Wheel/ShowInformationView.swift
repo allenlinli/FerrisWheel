@@ -9,20 +9,26 @@
 import UIKit
 
 class ShowInformationView: UIView {
-    var contentView: UIView?
+    var contentView: UIView!
+    var menuButton: UIButton!
+    var topBarView: UIView!
     
     convenience init(frame: CGRect, contentViewFrame: CGRect) {
         self.init(frame: frame)
-        backgroundColor = UIColor.purpleColor()
+        clipsToBounds = true
         
         contentView = UIView(frame: contentViewFrame)
-        guard let uContentView = contentView else {
-            fatalError("")
-        }
-        addSubview(uContentView)
         
-        let topBarView = UIView(frame: CGRect(x: 0, y: 0, width: contentViewFrame.height, height: 44))
-        uContentView.addSubview(topBarView)
+        addSubview(contentView)
+        
+        topBarView = UIView(frame: CGRect(x: 0, y: 0, width: contentViewFrame.height, height: 44))
+        topBarView.backgroundColor = UIColor.grayColor()
+        
+        let menuButtonImage = UIImage(named: "menubutton")
+        menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 47, height: 47))
+        menuButton.setImage(menuButtonImage, forState: UIControlState.Normal)
+        contentView.addSubview(topBarView)
+        topBarView.addSubview(menuButton)
     }
     
     override init(frame: CGRect) {
