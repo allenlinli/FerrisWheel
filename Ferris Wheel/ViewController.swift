@@ -41,6 +41,7 @@ class ViewController: UIViewController {
     }
 }
 
+
 extension ViewController: CarriageDelegate, FerrisWheelDelegate{
     func ferrisWheelDidStartRotate(){
         wheelRotatingSoundPlayer.play()
@@ -50,9 +51,23 @@ extension ViewController: CarriageDelegate, FerrisWheelDelegate{
         wheelRotatingSoundPlayer.pause()
     }
     
-    func carriageDidTapped() {
-        let vc = NextViewController()
+    func carriageDidTapped(sender: Carriage?) {
+        guard let initialFrame = sender?.frame else {
+            return
+        }
+        let showInformationView = ShowInformationView(frame: initialFrame, contentViewFrame: view.frame)
+        view.addSubview(showInformationView)
+        weak var wSelf = self
         
+        UIView.animateWithDuration(5, delay: 1.0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
+            assert(wSelf != nil,"! uwSelf!=nil")
+            if let uwSelf = wSelf {
+                showInformationView.frame = uwSelf.view.frame
+            }
+            
+            }, completion: { (finished: Bool) -> Void in
+                
+        })
     }
 }
 

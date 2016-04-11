@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol CarriageDelegate: class {
-    func carriageDidTapped()
+    func carriageDidTapped(sender: Carriage?)
 }
 
 class Carriage: UIControl{
@@ -51,7 +51,7 @@ class Carriage: UIControl{
     func carriageTapped() {
         /* for debug */
         print("carriageTapped")
-        delegate?.carriageDidTapped()
+        delegate?.carriageDidTapped(self)
     }
 }
 
