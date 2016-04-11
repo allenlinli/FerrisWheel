@@ -38,7 +38,7 @@
 		E9BD64011CB6A40000DBB347 /* Tickets.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63E91CB6A40000DBB347 /* Tickets.png */; };
 		E9BD64021CB6A40000DBB347 /* Tickets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63EA1CB6A40000DBB347 /* Tickets@2x.png */; };
 		E9BD64051CB6A41E00DBB347 /* menubutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */; };
-		E9BD64061CB6A41E00DBB347 /* PRSmenubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64041CB6A41E00DBB347 /* PRSmenubutton.png */; };
+		E9BD64061CB6A41E00DBB347 /* menubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64041CB6A41E00DBB347 /* menubutton.png */; };
 		E9BD640A1CB6A44100DBB347 /* ferriswheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */; };
 		E9BD640D1CB6A46E00DBB347 /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640B1CB6A46E00DBB347 /* wheel.png */; };
 		E9BD640E1CB6A46E00DBB347 /* wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */; };
@@ -93,7 +93,7 @@
 		E9BD63E91CB6A40000DBB347 /* Tickets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tickets.png; sourceTree = "<group>"; };
 		E9BD63EA1CB6A40000DBB347 /* Tickets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tickets@2x.png"; sourceTree = "<group>"; };
 		E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubutton@2x.png"; sourceTree = "<group>"; };
-		E9BD64041CB6A41E00DBB347 /* PRSmenubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRSmenubutton.png; sourceTree = "<group>"; };
+		E9BD64041CB6A41E00DBB347 /* menubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubutton.png; sourceTree = "<group>"; };
 		E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ferriswheel.mp3; sourceTree = "<group>"; };
 		E9BD640B1CB6A46E00DBB347 /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheel.png; sourceTree = "<group>"; };
 		E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheel@2x.png"; sourceTree = "<group>"; };
@@ -149,9 +149,9 @@
 				E9BD64071CB6A42900DBB347 /* Media */,
 				E92A88C41CB60B98003BB46A /* AppDelegate.swift */,
 				E92A88C61CB60B98003BB46A /* ViewController.swift */,
-				E9FB82961CBB557300445770 /* ShowInformationView.swift */,
 				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
 				E92A88DA1CB68723003BB46A /* Carriage.swift */,
+				E9FB82961CBB557300445770 /* ShowInformationView.swift */,
 				E92A88C81CB60B98003BB46A /* Main.storyboard */,
 				E92A88CB1CB60B98003BB46A /* Assets.xcassets */,
 				E92A88CD1CB60B98003BB46A /* LaunchScreen.storyboard */,
@@ -166,7 +166,7 @@
 				E9BD640B1CB6A46E00DBB347 /* wheel.png */,
 				E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */,
 				E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */,
-				E9BD64041CB6A41E00DBB347 /* PRSmenubutton.png */,
+				E9BD64041CB6A41E00DBB347 /* menubutton.png */,
 				E9BD63D21CB6A3AD00DBB347 /* CarriageImages */,
 			);
 			name = Images;
@@ -333,7 +333,7 @@
 				E9BD64021CB6A40000DBB347 /* Tickets@2x.png in Resources */,
 				E9BD63FB1CB6A40000DBB347 /* Shopping.png in Resources */,
 				E9BD63F11CB6A40000DBB347 /* Plan.png in Resources */,
-				E9BD64061CB6A41E00DBB347 /* PRSmenubutton.png in Resources */,
+				E9BD64061CB6A41E00DBB347 /* menubutton.png in Resources */,
 				E92A88CF1CB60B98003BB46A /* LaunchScreen.storyboard in Resources */,
 				E9BD63F51CB6A40000DBB347 /* Program.png in Resources */,
 				E9BD63FE1CB6A40000DBB347 /* Showbags@2x.png in Resources */,

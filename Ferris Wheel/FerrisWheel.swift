@@ -65,10 +65,6 @@ class FerrisWheel: UIControl{
         addSubview(wheelImageView)
         placeCarriages()
         sendSubviewToBack(wheelImageView)
-        
-        /* for debug  */
-//        backgroundColor = UIColor.greenColor()
-//        wheelImageView.backgroundColor = UIColor.brownColor()
     }
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
@@ -143,7 +139,6 @@ class FerrisWheel: UIControl{
     func calculateRadianOfTouchFromWheelCentreWithTouchPoint(point: CGPoint) -> CGFloat! {
         let dx = point.x - wheelImageViewCentre.x
         let dy = wheelImageViewCentre.y - point.y
-    
         return atan2(dy,dx)
     }
 }
