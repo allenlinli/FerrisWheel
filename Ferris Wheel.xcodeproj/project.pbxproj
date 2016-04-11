@@ -13,6 +13,8 @@
 		E92A88CC1CB60B98003BB46A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A88CB1CB60B98003BB46A /* Assets.xcassets */; };
 		E92A88CF1CB60B98003BB46A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A88CD1CB60B98003BB46A /* LaunchScreen.storyboard */; };
 		E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A88DA1CB68723003BB46A /* Carriage.swift */; };
+		E94E24D31CBBED91004E0B39 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E94E24C81CBBED91004E0B39 /* Default-Portrait.png */; };
+		E94E24D41CBBED91004E0B39 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94E24C91CBBED91004E0B39 /* Default-Portrait@2x.png */; };
 		E9BD63EB1CB6A40000DBB347 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63D31CB6A40000DBB347 /* About.png */; };
 		E9BD63EC1CB6A40000DBB347 /* About@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63D41CB6A40000DBB347 /* About@2x.png */; };
 		E9BD63ED1CB6A40000DBB347 /* FoodDrink.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63D51CB6A40000DBB347 /* FoodDrink.png */; };
@@ -38,7 +40,7 @@
 		E9BD64011CB6A40000DBB347 /* Tickets.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63E91CB6A40000DBB347 /* Tickets.png */; };
 		E9BD64021CB6A40000DBB347 /* Tickets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63EA1CB6A40000DBB347 /* Tickets@2x.png */; };
 		E9BD64051CB6A41E00DBB347 /* menubutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */; };
-		E9BD64061CB6A41E00DBB347 /* PRSmenubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64041CB6A41E00DBB347 /* PRSmenubutton.png */; };
+		E9BD64061CB6A41E00DBB347 /* menubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64041CB6A41E00DBB347 /* menubutton.png */; };
 		E9BD640A1CB6A44100DBB347 /* ferriswheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */; };
 		E9BD640D1CB6A46E00DBB347 /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640B1CB6A46E00DBB347 /* wheel.png */; };
 		E9BD640E1CB6A46E00DBB347 /* wheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */; };
@@ -46,6 +48,7 @@
 		E9FB81DC1CB953C400445770 /* Ferris_WheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */; };
 		E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82871CBA907E00445770 /* Double+Radian.swift */; };
 		E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB828A1CBA92F400445770 /* HelperMethods.swift */; };
+		E9FB82971CBB557300445770 /* ShowInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82961CBB557300445770 /* ShowInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,8 @@
 		E92A88CE1CB60B98003BB46A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E92A88D01CB60B98003BB46A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92A88DA1CB68723003BB46A /* Carriage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carriage.swift; sourceTree = "<group>"; };
+		E94E24C81CBBED91004E0B39 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		E94E24C91CBBED91004E0B39 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		E9BD63D31CB6A40000DBB347 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
 		E9BD63D41CB6A40000DBB347 /* About@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "About@2x.png"; sourceTree = "<group>"; };
 		E9BD63D51CB6A40000DBB347 /* FoodDrink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodDrink.png; sourceTree = "<group>"; };
@@ -92,7 +97,7 @@
 		E9BD63E91CB6A40000DBB347 /* Tickets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tickets.png; sourceTree = "<group>"; };
 		E9BD63EA1CB6A40000DBB347 /* Tickets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tickets@2x.png"; sourceTree = "<group>"; };
 		E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menubutton@2x.png"; sourceTree = "<group>"; };
-		E9BD64041CB6A41E00DBB347 /* PRSmenubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PRSmenubutton.png; sourceTree = "<group>"; };
+		E9BD64041CB6A41E00DBB347 /* menubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubutton.png; sourceTree = "<group>"; };
 		E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ferriswheel.mp3; sourceTree = "<group>"; };
 		E9BD640B1CB6A46E00DBB347 /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheel.png; sourceTree = "<group>"; };
 		E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheel@2x.png"; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 		E9FB81DD1CB953C400445770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FB82871CBA907E00445770 /* Double+Radian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Radian.swift"; sourceTree = "<group>"; };
 		E9FB828A1CBA92F400445770 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
+		E9FB82961CBB557300445770 /* ShowInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 				E92A88C61CB60B98003BB46A /* ViewController.swift */,
 				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
 				E92A88DA1CB68723003BB46A /* Carriage.swift */,
+				E9FB82961CBB557300445770 /* ShowInformationView.swift */,
 				E92A88C81CB60B98003BB46A /* Main.storyboard */,
 				E92A88CB1CB60B98003BB46A /* Assets.xcassets */,
 				E92A88CD1CB60B98003BB46A /* LaunchScreen.storyboard */,
@@ -157,13 +164,23 @@
 			path = "Ferris Wheel";
 			sourceTree = "<group>";
 		};
+		E94E24C01CBBED7F004E0B39 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				E94E24C81CBBED91004E0B39 /* Default-Portrait.png */,
+				E94E24C91CBBED91004E0B39 /* Default-Portrait@2x.png */,
+			);
+			name = "Launch Screen";
+			sourceTree = "<group>";
+		};
 		E9BD63D11CB6A39C00DBB347 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E94E24C01CBBED7F004E0B39 /* Launch Screen */,
 				E9BD640B1CB6A46E00DBB347 /* wheel.png */,
 				E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */,
 				E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */,
-				E9BD64041CB6A41E00DBB347 /* PRSmenubutton.png */,
+				E9BD64041CB6A41E00DBB347 /* menubutton.png */,
 				E9BD63D21CB6A3AD00DBB347 /* CarriageImages */,
 			);
 			name = Images;
@@ -329,8 +346,9 @@
 				E9BD63FF1CB6A40000DBB347 /* Shows.png in Resources */,
 				E9BD64021CB6A40000DBB347 /* Tickets@2x.png in Resources */,
 				E9BD63FB1CB6A40000DBB347 /* Shopping.png in Resources */,
+				E94E24D41CBBED91004E0B39 /* Default-Portrait@2x.png in Resources */,
 				E9BD63F11CB6A40000DBB347 /* Plan.png in Resources */,
-				E9BD64061CB6A41E00DBB347 /* PRSmenubutton.png in Resources */,
+				E9BD64061CB6A41E00DBB347 /* menubutton.png in Resources */,
 				E92A88CF1CB60B98003BB46A /* LaunchScreen.storyboard in Resources */,
 				E9BD63F51CB6A40000DBB347 /* Program.png in Resources */,
 				E9BD63FE1CB6A40000DBB347 /* Showbags@2x.png in Resources */,
@@ -347,6 +365,7 @@
 				E9BD63FA1CB6A40000DBB347 /* Search@2x.png in Resources */,
 				E9BD63EB1CB6A40000DBB347 /* About.png in Resources */,
 				E9BD640E1CB6A46E00DBB347 /* wheel@2x.png in Resources */,
+				E94E24D31CBBED91004E0B39 /* Default-Portrait.png in Resources */,
 				E9BD64011CB6A40000DBB347 /* Tickets.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +389,7 @@
 				E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */,
 				E92A88C71CB60B98003BB46A /* ViewController.swift in Sources */,
 				E92A88C51CB60B98003BB46A /* AppDelegate.swift in Sources */,
+				E9FB82971CBB557300445770 /* ShowInformationView.swift in Sources */,
 				E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +523,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "allenlinli.Ferris-Wheel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -514,6 +535,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "allenlinli.Ferris-Wheel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -9,6 +9,52 @@
 import Foundation
 import UIKit
 
+protocol CarriageDelegate: class {
+    func carriageDidTapped(sender: Carriage?)
+}
+
+class Carriage: UIControl{
+    var type: CarriageType!
+    var carriageImageView: UIImageView!
+    weak var delegate: CarriageDelegate?
+
+    var titleLabel: UILabel!
+    let TitleLabelSize = CGSize(width: 50, height: 10)
+    
+    init(frame: CGRect, type: CarriageType) {
+        self.type = type
+        
+        let carriageImage = UIImage(named:type.getCarriageImageName())
+        carriageImageView = UIImageView(image: carriageImage)
+        titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0,y: frame.height-4), size: TitleLabelSize))
+        titleLabel.backgroundColor = UIColor.blackColor()
+        titleLabel.text = type.getCarriageTitle()
+        titleLabel.textColor = UIColor(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 1)
+        titleLabel.font = UIFont.systemFontOfSize(8.0, weight: TitleLabelSize.width)
+        titleLabel.textAlignment = NSTextAlignment.Center
+        
+        super.init(frame: frame)
+        addSubview(carriageImageView)
+        carriageImageView.addSubview(titleLabel)
+        
+        addTarget(self, action: #selector(Carriage.carriageTapped), forControlEvents: UIControlEvents.TouchDown)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func carriageTapped() {
+        /* for debug */
+        print("carriageTapped")
+        delegate?.carriageDidTapped(self)
+    }
+}
+
 public enum CarriageType {
     case Rides
     case Showbags
@@ -58,39 +104,4 @@ public enum CarriageType {
     }
     
     public static let allValues = [Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn,Rides]
-}
-
-
-
-public class Carriage: UIControl{
-    var type: CarriageType!
-    var carriageImageView: UIImageView!
-
-    var titleLabel: UILabel!
-    let TitleLabelSize = CGSize(width: 50, height: 10)
-    
-    init(frame: CGRect, type: CarriageType) {
-        self.type = type
-        
-        let carriageImage = UIImage(named:type.getCarriageImageName())
-        carriageImageView = UIImageView(image: carriageImage)
-        titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0,y: frame.height-4), size: TitleLabelSize))
-        titleLabel.backgroundColor = UIColor.blackColor()
-        titleLabel.text = type.getCarriageTitle()
-        titleLabel.textColor = UIColor(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 1)
-        titleLabel.font = UIFont.systemFontOfSize(8.0, weight: TitleLabelSize.width)
-        titleLabel.textAlignment = NSTextAlignment.Center
-        
-        super.init(frame: frame)
-        addSubview(carriageImageView)
-        carriageImageView.addSubview(titleLabel)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
