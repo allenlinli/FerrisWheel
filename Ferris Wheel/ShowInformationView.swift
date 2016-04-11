@@ -23,11 +23,13 @@ class ShowInformationView: UIView {
     
     convenience init(frame: CGRect, contentViewFrame: CGRect, delegate: MenuButtonDelegate?) {
         self.init(frame: frame)
-        print("contentViewFrame: \(contentViewFrame)")
-        
         clipsToBounds = true
+        
+        //this is work around. too many magic number.
         backgroundColor = UIColor(red: 74.0/255.0, green: 74.0/255.0, blue: 74.0/255.0, alpha: 1)
-        contentView = UIView(frame: contentViewFrame)
+        
+        let adjustFrame = CGRect(x: contentViewFrame.origin.x, y: contentViewFrame.origin.y, width: contentViewFrame.width, height: contentViewFrame.height)
+        contentView = UIView(frame: adjustFrame)
         
         whiteView = UIView(frame: CGRect(x: CGFloat(0.0),y: TopBarHeight+8,width: contentViewFrame.width,height: contentViewFrame.height-TopBarHeight))
         whiteView.backgroundColor = UIColor.whiteColor()
@@ -43,7 +45,7 @@ class ShowInformationView: UIView {
         menuButtonDelegate = delegate
         menuButton.addTarget(menuButtonDelegate!, action: #selector(ViewController.menuButtonTapped), forControlEvents: UIControlEvents.TouchDown)
         
-        titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: contentViewFrame.width, height: 50))
+        titleLabel = UILabel(frame: CGRect(x: 0, y: 8, width: contentViewFrame.width-16, height: 50))
         titleLabel.text = "Show Information"
         titleLabel.textAlignment = NSTextAlignment.Right
         titleLabel.textColor = UIColor(red: 173/255.0, green: 173/255.0, blue: 173/255.0, alpha: 1)
