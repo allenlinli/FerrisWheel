@@ -11,7 +11,7 @@ import AVFoundation
 
 let WheelSize = CGSize(width: 320.0, height: 320.0)
 
-class ViewController: UIViewController, FerrisWheelDelegate, CarriageDelegate {
+class ViewController: UIViewController {
     var ferrisWheel: FerrisWheel!
     var wheelRotatingSoundPlayer: AVAudioPlayer! = AVAudioPlayer()
     
@@ -39,8 +39,9 @@ class ViewController: UIViewController, FerrisWheelDelegate, CarriageDelegate {
         }
         wheelRotatingSoundPlayer.numberOfLoops = -1
     }
+}
 
-    
+extension ViewController: CarriageDelegate, FerrisWheelDelegate{
     func ferrisWheelDidStartRotate(){
         wheelRotatingSoundPlayer.play()
     }

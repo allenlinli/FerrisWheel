@@ -36,6 +36,8 @@ class Carriage: UIControl{
         super.init(frame: frame)
         addSubview(carriageImageView)
         carriageImageView.addSubview(titleLabel)
+        
+        addTarget(self, action: #selector(Carriage.carriageTapped), forControlEvents: UIControlEvents.TouchDown)
     }
     
     override init(frame: CGRect) {
@@ -46,7 +48,9 @@ class Carriage: UIControl{
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    func carriageTapped() {
+        /* for debug */
+        print("carriageTapped")
         delegate?.carriageDidTapped()
     }
 }

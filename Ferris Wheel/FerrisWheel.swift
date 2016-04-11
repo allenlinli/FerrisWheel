@@ -138,7 +138,7 @@ class FerrisWheel: UIControl{
     }
     
     func calculateDistanceFromCenter(point: CGPoint) -> CGFloat {
-        return calculateDistanceWith(point, point2: wheelImageViewCentre)
+        return HelperMethods.calculateDistanceWith(point, point2: wheelImageViewCentre)
     }
     
     func calculateRadianOfTouchFromWheelCentreWithTouchPoint(point: CGPoint) -> CGFloat! {
