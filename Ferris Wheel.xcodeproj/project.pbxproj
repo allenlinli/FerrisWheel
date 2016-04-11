@@ -13,8 +13,6 @@
 		E92A88CC1CB60B98003BB46A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92A88CB1CB60B98003BB46A /* Assets.xcassets */; };
 		E92A88CF1CB60B98003BB46A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92A88CD1CB60B98003BB46A /* LaunchScreen.storyboard */; };
 		E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A88DA1CB68723003BB46A /* Carriage.swift */; };
-		E94E24D31CBBED91004E0B39 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = E94E24C81CBBED91004E0B39 /* Default-Portrait.png */; };
-		E94E24D41CBBED91004E0B39 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E94E24C91CBBED91004E0B39 /* Default-Portrait@2x.png */; };
 		E9BD63EB1CB6A40000DBB347 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63D31CB6A40000DBB347 /* About.png */; };
 		E9BD63EC1CB6A40000DBB347 /* About@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63D41CB6A40000DBB347 /* About@2x.png */; };
 		E9BD63ED1CB6A40000DBB347 /* FoodDrink.png in Resources */ = {isa = PBXBuildFile; fileRef = E9BD63D51CB6A40000DBB347 /* FoodDrink.png */; };
@@ -70,8 +68,6 @@
 		E92A88CE1CB60B98003BB46A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E92A88D01CB60B98003BB46A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92A88DA1CB68723003BB46A /* Carriage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carriage.swift; sourceTree = "<group>"; };
-		E94E24C81CBBED91004E0B39 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
-		E94E24C91CBBED91004E0B39 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		E9BD63D31CB6A40000DBB347 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
 		E9BD63D41CB6A40000DBB347 /* About@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "About@2x.png"; sourceTree = "<group>"; };
 		E9BD63D51CB6A40000DBB347 /* FoodDrink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FoodDrink.png; sourceTree = "<group>"; };
@@ -164,19 +160,9 @@
 			path = "Ferris Wheel";
 			sourceTree = "<group>";
 		};
-		E94E24C01CBBED7F004E0B39 /* Launch Screen */ = {
-			isa = PBXGroup;
-			children = (
-				E94E24C81CBBED91004E0B39 /* Default-Portrait.png */,
-				E94E24C91CBBED91004E0B39 /* Default-Portrait@2x.png */,
-			);
-			name = "Launch Screen";
-			sourceTree = "<group>";
-		};
 		E9BD63D11CB6A39C00DBB347 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				E94E24C01CBBED7F004E0B39 /* Launch Screen */,
 				E9BD640B1CB6A46E00DBB347 /* wheel.png */,
 				E9BD640C1CB6A46E00DBB347 /* wheel@2x.png */,
 				E9BD64031CB6A41E00DBB347 /* menubutton@2x.png */,
@@ -346,7 +332,6 @@
 				E9BD63FF1CB6A40000DBB347 /* Shows.png in Resources */,
 				E9BD64021CB6A40000DBB347 /* Tickets@2x.png in Resources */,
 				E9BD63FB1CB6A40000DBB347 /* Shopping.png in Resources */,
-				E94E24D41CBBED91004E0B39 /* Default-Portrait@2x.png in Resources */,
 				E9BD63F11CB6A40000DBB347 /* Plan.png in Resources */,
 				E9BD64061CB6A41E00DBB347 /* menubutton.png in Resources */,
 				E92A88CF1CB60B98003BB46A /* LaunchScreen.storyboard in Resources */,
@@ -365,7 +350,6 @@
 				E9BD63FA1CB6A40000DBB347 /* Search@2x.png in Resources */,
 				E9BD63EB1CB6A40000DBB347 /* About.png in Resources */,
 				E9BD640E1CB6A46E00DBB347 /* wheel@2x.png in Resources */,
-				E94E24D31CBBED91004E0B39 /* Default-Portrait.png in Resources */,
 				E9BD64011CB6A40000DBB347 /* Tickets.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -67,7 +67,7 @@ extension ViewController: CarriageDelegate, FerrisWheelDelegate, MenuButtonDeleg
         
         weak var wSelf = self
         
-        //this is work around to add 14 on y, ie. "view.frame.origin.y+14". Don't know how to make view.frame correct
+        //this is workaround to add 14 on y, ie. "view.frame.origin.y+14". Don't know how to make view.frame correct
         let selfViewFrame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y+16, width: view.frame.width, height: view.frame.height)
         UIView.animateWithDuration(0.7, delay: 1.0, options: UIViewAnimationOptions.TransitionNone, animations: { () -> Void in
             wSelf!.showInformationView!.frame = selfViewFrame
