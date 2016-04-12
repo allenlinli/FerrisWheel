@@ -33,7 +33,7 @@ class FerrisWheel: UIControl{
     }
     var wheelImageViewCentre: CGPoint { get { return wheelImageView.center } }
     let wheelRadius: CGFloat!
-    let WheelRadiusIndent = CGFloat(25.0)
+    let WheelRadiusIndent = 25.0 as CGFloat
     var radius: CGFloat { get { return wheelRadius - WheelRadiusIndent} }
     func calculatePointFromRadiusFromWheelCentreWithRadian(radian: CGFloat) -> CGPoint {
         let dxFromWheelCentre = radius * cos(radian)
@@ -50,12 +50,10 @@ class FerrisWheel: UIControl{
     
     // MARK: init functions
     override init(frame: CGRect) {
-        //>> setup wheelImageView
         let wheelImage = UIImage(named: WheelImageName)
         wheelImageView = UIImageView(image:wheelImage)
         wheelRadius = wheelImageView.frame.size.width / 2
         
-        //>> setup carriages
         self.carriages = CarriageType.allValues.map { (type) -> Carriage in
             return Carriage(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CarriageSize), type: type)
         }
@@ -119,11 +117,11 @@ class FerrisWheel: UIControl{
         ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidFinishRotate()
     }
     
-    // MARK: helper methods for rotating
     func placeCarriages() {
         placeCarriagesWithRadianDifference(0)
     }
     
+    // MARK: helper methods for rotating
     func placeCarriagesWithRadianDifference(dRadian: CGFloat) {
         for (index, carriage) in carriages.enumerate() {
             let radianForThisCarriage = CGFloat(index) * eachCarriageAngle / 180.0 * CGFloat(M_PI)

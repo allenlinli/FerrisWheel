@@ -15,10 +15,10 @@
 		E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92A88DA1CB68723003BB46A /* Carriage.swift */; };
 		E9BD640A1CB6A44100DBB347 /* ferriswheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */; };
 		E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */; };
+		E9D39ACA1CBC9AB40077C146 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D39AC91CBC9AB40077C146 /* InformationViewController.swift */; };
 		E9FB81DC1CB953C400445770 /* Ferris_WheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */; };
 		E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82871CBA907E00445770 /* Double+Radian.swift */; };
 		E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB828A1CBA92F400445770 /* HelperMethods.swift */; };
-		E9FB82971CBB557300445770 /* ShowInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82961CBB557300445770 /* ShowInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,12 +42,12 @@
 		E92A88DA1CB68723003BB46A /* Carriage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carriage.swift; sourceTree = "<group>"; };
 		E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ferriswheel.mp3; sourceTree = "<group>"; };
 		E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FerrisWheel.swift; sourceTree = "<group>"; };
+		E9D39AC91CBC9AB40077C146 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		E9FB81D91CB953C400445770 /* Ferris WheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ferris WheelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ferris_WheelTests.swift; sourceTree = "<group>"; };
 		E9FB81DD1CB953C400445770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FB82871CBA907E00445770 /* Double+Radian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Radian.swift"; sourceTree = "<group>"; };
 		E9FB828A1CBA92F400445770 /* HelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
-		E9FB82961CBB557300445770 /* ShowInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,35 +89,12 @@
 		E92A88C31CB60B98003BB46A /* Ferris Wheel */ = {
 			isa = PBXGroup;
 			children = (
-				E9FB82891CBA928000445770 /* Helper Methods */,
-				E9BD64071CB6A42900DBB347 /* Media */,
-				E92A88C41CB60B98003BB46A /* AppDelegate.swift */,
-				E92A88C61CB60B98003BB46A /* ViewController.swift */,
-				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
-				E92A88DA1CB68723003BB46A /* Carriage.swift */,
-				E9FB82961CBB557300445770 /* ShowInformationView.swift */,
-				E92A88C81CB60B98003BB46A /* Main.storyboard */,
-				E92A88CB1CB60B98003BB46A /* Assets.xcassets */,
-				E92A88CD1CB60B98003BB46A /* LaunchScreen.storyboard */,
-				E92A88D01CB60B98003BB46A /* Info.plist */,
+				E9D591791CBCB6F9000332B2 /* Controllers */,
+				E9D591771CBCB663000332B2 /* UI */,
+				E9FB82891CBA928000445770 /* Helpers */,
+				E9D591781CBCB692000332B2 /* Supporting Files */,
 			);
 			path = "Ferris Wheel";
-			sourceTree = "<group>";
-		};
-		E9BD63D11CB6A39C00DBB347 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
-		E9BD64071CB6A42900DBB347 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				E9BD64081CB6A43600DBB347 /* Audio */,
-				E9BD63D11CB6A39C00DBB347 /* Images */,
-			);
-			name = Media;
 			sourceTree = "<group>";
 		};
 		E9BD64081CB6A43600DBB347 /* Audio */ = {
@@ -126,6 +103,37 @@
 				E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */,
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		E9D591771CBCB663000332B2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E92A88C81CB60B98003BB46A /* Main.storyboard */,
+				E92A88CB1CB60B98003BB46A /* Assets.xcassets */,
+				E9BD64081CB6A43600DBB347 /* Audio */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E9D591781CBCB692000332B2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E92A88CD1CB60B98003BB46A /* LaunchScreen.storyboard */,
+				E92A88C41CB60B98003BB46A /* AppDelegate.swift */,
+				E92A88D01CB60B98003BB46A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9D591791CBCB6F9000332B2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E92A88C61CB60B98003BB46A /* ViewController.swift */,
+				E9D39AC91CBC9AB40077C146 /* InformationViewController.swift */,
+				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
+				E92A88DA1CB68723003BB46A /* Carriage.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		E9FB81DA1CB953C400445770 /* Ferris WheelTests */ = {
@@ -137,13 +145,13 @@
 			path = "Ferris WheelTests";
 			sourceTree = "<group>";
 		};
-		E9FB82891CBA928000445770 /* Helper Methods */ = {
+		E9FB82891CBA928000445770 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				E9FB82871CBA907E00445770 /* Double+Radian.swift */,
 				E9FB828A1CBA92F400445770 /* HelperMethods.swift */,
 			);
-			name = "Helper Methods";
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,10 +258,10 @@
 			files = (
 				E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */,
 				E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */,
+				E9D39ACA1CBC9AB40077C146 /* InformationViewController.swift in Sources */,
 				E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */,
 				E92A88C71CB60B98003BB46A /* ViewController.swift in Sources */,
 				E92A88C51CB60B98003BB46A /* AppDelegate.swift in Sources */,
-				E9FB82971CBB557300445770 /* ShowInformationView.swift in Sources */,
 				E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
