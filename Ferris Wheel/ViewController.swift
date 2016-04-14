@@ -17,6 +17,12 @@ class ViewController: UIViewController {
     var initialCarriageFrame: CGRect?
     var choosedCarriage: Carriage?
     
+    private let infoVCPresentAnimationController = InfoVCPresentAnimationController()
+    private let infoVCDismissAnimationController = InfoVCDismissAnimationController()
+    
+    private let presentAnimationController = InfoVCPresentAnimationController()
+    private let dismissAnimationController = InfoVCDismissAnimationController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +54,10 @@ class ViewController: UIViewController {
         wheelRotatingSoundPlayer.numberOfLoops = -1
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
     }
@@ -60,23 +70,42 @@ class ViewController: UIViewController {
         if segue.identifier == "PresentInformationViewSegueID" {
             let infoVC = segue.destinationViewController as! InformationViewController
             infoVC.carriage = choosedCarriage
+            infoVC.informationViewControllerDelegate = self
+            infoVC.transitioningDelegate = self
         }
     }
 }
 
 
-extension ViewController: CarriageDelegate, FerrisWheelDelegate {
+extension ViewController: FerrisWheelDelegate, InformationViewControllerDelegate{
     func ferrisWheelDidStartRotate(){
         wheelRotatingSoundPlayer.play()
     }
     
-    func ferrisWheelDidFinishRotate(){
+    func ferrisWheelDidStopRotate(){
         wheelRotatingSoundPlayer.pause()
     }
     
-    func carriageDidTapped(sender: Carriage?) {
+    func openCarriage(sender: Carriage!) {
         choosedCarriage = sender
         performSegueWithIdentifier("PresentInformationViewSegueID", sender: nil)
     }
+    
+    func menuButtonPressed(sender: InformationViewController?){
+        dismissViewControllerAnimated(true) {
+        }
+    }
 }
 
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        infoVCPresentAnimationController.originFrame = ferrisWheel.convertRect(choosedCarriage!.frame, toView: view)
+        return infoVCPresentAnimationController
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        infoVCDismissAnimationController.destinationFrame = ferrisWheel.convertRect(choosedCarriage!.frame, toView: view)
+        return infoVCDismissAnimationController
+    }
+}

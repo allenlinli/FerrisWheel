@@ -16,6 +16,9 @@
 		E9BD640A1CB6A44100DBB347 /* ferriswheel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */; };
 		E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */; };
 		E9D39ACA1CBC9AB40077C146 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D39AC91CBC9AB40077C146 /* InformationViewController.swift */; };
+		E9F86DAE1CBCECFC006887EB /* InfoVCPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F86DAD1CBCECFC006887EB /* InfoVCPresentAnimationController.swift */; };
+		E9F86DB01CBCED0B006887EB /* InfoVCDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F86DAF1CBCED0B006887EB /* InfoVCDismissAnimationController.swift */; };
+		E9F86DDE1CBF67F6006887EB /* FerrisWheel+UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F86DDD1CBF67F6006887EB /* FerrisWheel+UIControl.swift */; };
 		E9FB81DC1CB953C400445770 /* Ferris_WheelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */; };
 		E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB82871CBA907E00445770 /* Double+Radian.swift */; };
 		E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FB828A1CBA92F400445770 /* HelperMethods.swift */; };
@@ -43,6 +46,9 @@
 		E9BD64091CB6A44100DBB347 /* ferriswheel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ferriswheel.mp3; sourceTree = "<group>"; };
 		E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FerrisWheel.swift; sourceTree = "<group>"; };
 		E9D39AC91CBC9AB40077C146 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		E9F86DAD1CBCECFC006887EB /* InfoVCPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVCPresentAnimationController.swift; sourceTree = "<group>"; };
+		E9F86DAF1CBCED0B006887EB /* InfoVCDismissAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoVCDismissAnimationController.swift; sourceTree = "<group>"; };
+		E9F86DDD1CBF67F6006887EB /* FerrisWheel+UIControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FerrisWheel+UIControl.swift"; sourceTree = "<group>"; };
 		E9FB81D91CB953C400445770 /* Ferris WheelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ferris WheelTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FB81DB1CB953C400445770 /* Ferris_WheelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ferris_WheelTests.swift; sourceTree = "<group>"; };
 		E9FB81DD1CB953C400445770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,9 +137,20 @@
 				E92A88C61CB60B98003BB46A /* ViewController.swift */,
 				E9D39AC91CBC9AB40077C146 /* InformationViewController.swift */,
 				E9BD640F1CB6B4EB00DBB347 /* FerrisWheel.swift */,
+				E9F86DDD1CBF67F6006887EB /* FerrisWheel+UIControl.swift */,
 				E92A88DA1CB68723003BB46A /* Carriage.swift */,
+				E9F86DDF1CBF7866006887EB /* Animtaion */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E9F86DDF1CBF7866006887EB /* Animtaion */ = {
+			isa = PBXGroup;
+			children = (
+				E9F86DAD1CBCECFC006887EB /* InfoVCPresentAnimationController.swift */,
+				E9F86DAF1CBCED0B006887EB /* InfoVCDismissAnimationController.swift */,
+			);
+			name = Animtaion;
 			sourceTree = "<group>";
 		};
 		E9FB81DA1CB953C400445770 /* Ferris WheelTests */ = {
@@ -259,9 +276,12 @@
 				E9BD64101CB6B4EB00DBB347 /* FerrisWheel.swift in Sources */,
 				E9FB82881CBA907E00445770 /* Double+Radian.swift in Sources */,
 				E9D39ACA1CBC9AB40077C146 /* InformationViewController.swift in Sources */,
+				E9F86DAE1CBCECFC006887EB /* InfoVCPresentAnimationController.swift in Sources */,
 				E9FB828B1CBA92F400445770 /* HelperMethods.swift in Sources */,
+				E9F86DB01CBCED0B006887EB /* InfoVCDismissAnimationController.swift in Sources */,
 				E92A88C71CB60B98003BB46A /* ViewController.swift in Sources */,
 				E92A88C51CB60B98003BB46A /* AppDelegate.swift in Sources */,
+				E9F86DDE1CBF67F6006887EB /* FerrisWheel+UIControl.swift in Sources */,
 				E92A88DB1CB68723003BB46A /* Carriage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

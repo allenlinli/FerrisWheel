@@ -12,69 +12,81 @@ import CoreGraphics
 
 protocol FerrisWheelDelegate: class {
     func ferrisWheelDidStartRotate()
-    func ferrisWheelDidFinishRotate()
+    func ferrisWheelDidStopRotate()
+    func openCarriage(carriage: Carriage!)
 }
 
 let WheelImageName: String = "wheel"
 let CarriageSize = CGSize(width: 50.0 , height: 50.0)
 
-class FerrisWheel: UIControl{
+private var myContext = 0
+
+class FerrisWheel: UIControl, CarriageDelegate{
     let wheelImageView: UIImageView!
     let carriages: [Carriage]!
     
-    weak var ferrisWheelDidFinishRotateDelegate: FerrisWheelDelegate?
+    weak var ferrisWheelDelegate: FerrisWheelDelegate?
     
     // MARK: for counting degree
     var carriageCount = 12
-    var eachCarriageAngle: CGFloat {
-        get {
-            return 360.0 / CGFloat(carriageCount)
-        }
-    }
+    var eachCarriageRadian: CGFloat { get { return CGFloat(M_PI * 2) / CGFloat(carriageCount) } }
     var wheelImageViewCentre: CGPoint { get { return wheelImageView.center } }
     let wheelRadius: CGFloat!
     let WheelRadiusIndent = 25.0 as CGFloat
     var radius: CGFloat { get { return wheelRadius - WheelRadiusIndent} }
-    func calculatePointFromRadiusFromWheelCentreWithRadian(radian: CGFloat) -> CGPoint {
-        let dxFromWheelCentre = radius * cos(radian)
-        let dyFromWheelCentre = radius * sin(radian)
-        return CGPoint(x:wheelImageViewCentre.x + dxFromWheelCentre, y: wheelImageViewCentre.y + dyFromWheelCentre)
-    }
     
     // MARK:  for rotating of wheel
-    var startTransform: CGAffineTransform?
-    var radianOfTouchFromWheelCentre: CGFloat?
-    var carriagesCentres: [CGPoint]!
-    let InitialRadianOffset: CGFloat = 0.39
+    var carriahesPoints: [CGPoint]!
     
+    var startTransform: CGAffineTransform!
+    var radianOfBeginTouchPoint: CGFloat?
+    var carriagesCentres: [CGPoint]!
+    //First Carriage is "Rides"
+    let initialRadianOfFirstCarriage: CGFloat = -1.7
+    var radianOfFirstCarriage: CGFloat
+    var lastRadianFromBeginTouchPoint: CGFloat = 0.0
+    var pointOfFirstCarriageOnWheelImageView: CGPoint!
     
     // MARK: init functions
     override init(frame: CGRect) {
         let wheelImage = UIImage(named: WheelImageName)
         wheelImageView = UIImageView(image:wheelImage)
         wheelRadius = wheelImageView.frame.size.width / 2
-        
+        startTransform = wheelImageView.transform
         self.carriages = CarriageType.allValues.map { (type) -> Carriage in
             return Carriage(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: CarriageSize), type: type)
         }
         
+        radianOfFirstCarriage = initialRadianOfFirstCarriage
+        
         super.init(frame: frame)
         
         addSubview(wheelImageView)
-        placeCarriages()
-        sendSubviewToBack(wheelImageView)
+        
+        //>> Places Carirages
+        carriahesPoints = carriages.map { (carriage: Carriage) -> CGPoint in
+            let radianForThisCarriage = CGFloat(carriage.index()) * eachCarriageRadian + initialRadianOfFirstCarriage
+            return pointWithRadian(radianForThisCarriage)
+        }
+        for carriage in carriages {
+            let pointOfThisCarriageOnView = carriahesPoints[carriage.index()]
+            carriage.center = pointOfThisCarriageOnView
+            if carriage.superview == nil {
+                addSubview(carriage)
+            }
+        }
+        
+        wheelImageView.addObserver(self,
+                             forKeyPath: "transform",
+                             options: .New,
+                             context: &myContext)
     }
     
     convenience init(frame: CGRect, delegate: FerrisWheelDelegate?) {
         self.init(frame: frame)
-        ferrisWheelDidFinishRotateDelegate = delegate
-        
-        assert(ferrisWheelDidFinishRotateDelegate != nil, "ferrisWheelDidFinishRotateDelegate == nil")
+        ferrisWheelDelegate = delegate
         for tCarriage in carriages {
-            guard let delegate = ferrisWheelDidFinishRotateDelegate as? CarriageDelegate else{
-                fatalError("no CarriageDelegate")
-            }
-            tCarriage.delegate = delegate
+            tCarriage.delegate = self
         }
     }
     
@@ -82,64 +94,101 @@ class FerrisWheel: UIControl{
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: UIControl Delegates
-    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let touchPoint = touch.locationInView(self)
-        let distanceFromCentre = calculateDistanceFromCenter(touchPoint)
-        let WheelOutterRadius = CGFloat(130.0)
-        if distanceFromCentre > WheelOutterRadius { return false }
+    // MARK: About Rotate
+    var rotateTimer: NSTimer?
+    var radianDifferenceToRotate: CGFloat?
+    var rotatingRadianAmount: CGFloat? = 0
+    //>> radianPerTimeInterval=0.03, rotatingTimeInterval =0.03
+    let radianPerTimeInterval: CGFloat = 0.02 //Rotating Speed
+    let rotatingTimeInterval: Double = 0.000003
+    var choosedCarriage: Carriage!
+    func rotateCarriageToTop(carriage: Carriage!) {
+        userInteractionEnabled = false
+        rotatingRadianAmount = 0
+        choosedCarriage = carriage
+        didStartRotate()
+        let choosedCarriagePoint = wheelImageView.convertPoint(carriahesPoints[choosedCarriage!.index()], toView: self)
         
-        startTransform = wheelImageView.transform
-        radianOfTouchFromWheelCentre = calculateRadianOfTouchFromWheelCentreWithTouchPoint(touchPoint)
+        let TwoPI = CGFloat(M_PI) * 2
+        let choosedCarriageRadian = radianWithPoint(choosedCarriagePoint)
+        let clockWiseRadianFromRight = -choosedCarriageRadian
+        var clockWiseRadianFromTop = clockWiseRadianFromRight + TwoPI/4
         
-        ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidStartRotate()
-        return true
+        if clockWiseRadianFromTop >= CGFloat(0) {
+            while clockWiseRadianFromTop >= TwoPI {
+                clockWiseRadianFromTop -= TwoPI
+            }
+        }
+        else {
+            while clockWiseRadianFromTop < CGFloat(0) {
+                clockWiseRadianFromTop += TwoPI
+            }
+        }
+        
+        let positiveClockWiseRadianFromTop = clockWiseRadianFromTop
+        radianDifferenceToRotate = CGFloat(M_PI) * 2 - positiveClockWiseRadianFromTop
+    
+        rotateTimer = NSTimer.scheduledTimerWithTimeInterval(rotatingTimeInterval, target: self, selector: #selector(rotateForATimeInterval), userInfo: nil, repeats: true)
+        rotateTimer!.fire()
     }
     
-    override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let touchPoint = touch.locationInView(self)
+    func rotateForATimeInterval() {
+        wheelImageView.transform = CGAffineTransformRotate(startTransform,  rotatingRadianAmount!);
         
-        guard let uRadianOfTouchFromWheelCentre = radianOfTouchFromWheelCentre else { return false }
-        let radianDifference = calculateRadianOfTouchFromWheelCentreWithTouchPoint(touchPoint) - uRadianOfTouchFromWheelCentre
-        
-        guard let uStartTransform = startTransform else {  return false }
-        wheelImageView.transform = CGAffineTransformRotate(uStartTransform, -radianDifference);
-        
-        placeCarriagesWithRadianDifference(radianDifference)
-        return true
-    }
-    
-    override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
-        ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidFinishRotate()
-    }
-    
-    override func cancelTrackingWithEvent(event: UIEvent?) {
-        ferrisWheelDidFinishRotateDelegate?.ferrisWheelDidFinishRotate()
-    }
-    
-    func placeCarriages() {
-        placeCarriagesWithRadianDifference(0)
-    }
-    
-    // MARK: helper methods for rotating
-    func placeCarriagesWithRadianDifference(dRadian: CGFloat) {
-        for (index, carriage) in carriages.enumerate() {
-            let radianForThisCarriage = CGFloat(index) * eachCarriageAngle / 180.0 * CGFloat(M_PI)
-            carriage.center = calculatePointFromRadiusFromWheelCentreWithRadian(radianForThisCarriage+InitialRadianOffset-dRadian)
-            if (carriage.superview == nil) { addSubview(carriage) }
+        rotatingRadianAmount! += radianPerTimeInterval
+        let shouldStop = radianDifferenceToRotate! - rotatingRadianAmount! <= 0
+        if shouldStop {
+            print("")
+            
+            
+            didStopRotate()
+            rotatingRadianAmount = 0
+            radianDifferenceToRotate = 0
+            startTransform = wheelImageView.transform
+            rotateTimer?.invalidate()
+            rotateTimer = nil
+            ferrisWheelDelegate?.openCarriage(choosedCarriage)
+            choosedCarriage = nil
+            userInteractionEnabled = true
         }
     }
     
-    func calculateDistanceFromCenter(point: CGPoint) -> CGFloat {
-        return HelperMethods.calculateDistanceWith(point, point2: wheelImageViewCentre)
+    func didStartRotate() {
+        startTransform = wheelImageView.transform
+        ferrisWheelDelegate?.ferrisWheelDidStartRotate()
     }
     
-    func calculateRadianOfTouchFromWheelCentreWithTouchPoint(point: CGPoint) -> CGFloat! {
+    func didStopRotate() {
+        startTransform = wheelImageView.transform
+        ferrisWheelDelegate?.ferrisWheelDidStopRotate()
+    }
+    
+    
+    // MARK: About Radian
+    func radianWithPoint(point: CGPoint) -> CGFloat! {
         let dx = point.x - wheelImageViewCentre.x
         let dy = wheelImageViewCentre.y - point.y
         return atan2(dy,dx)
     }
+    
+    // MARK: About Point and Distance
+    func pointWithRadian(radian: CGFloat) -> CGPoint {
+        let dxFromWheelCentre = radius * cos(radian)
+        let dyFromWheelCentre = radius * sin(radian)
+        return CGPoint(x:wheelImageViewCentre.x + dxFromWheelCentre, y: wheelImageViewCentre.y + dyFromWheelCentre)
+    }
+    
+    // MARK: KVO
+    override func observeValueForKeyPath(keyPath: String?,
+                                         ofObject object: AnyObject?,
+                                                  change: [String : AnyObject]?,
+                                                  context: UnsafeMutablePointer<Void>)
+    {
+        if let _ = change where context == &myContext {
+            for carriage in carriages {
+                let pointOfThisCarriageOnView = wheelImageView.convertPoint(carriahesPoints[carriage.index()], toView: self)
+                carriage.center = pointOfThisCarriageOnView
+            }
+        }
+    }
 }
-
-
-
