@@ -49,14 +49,16 @@ class Carriage: UIControl{
     }
     
     func carriageTapped() {
-        /* for debug */
-        print("carriageTapped")
         delegate?.carriageDidTapped(self)
+    }
+    
+    func index () -> Int {
+        return type.rawValue
     }
 }
 
-public enum CarriageType {
-    case Rides
+public enum CarriageType: Int {
+    case Rides = 0
     case Showbags
     case Plan
     case FoodDrink
@@ -103,5 +105,5 @@ public enum CarriageType {
         }
     }
     
-    public static let allValues = [Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn,Rides]
+    public static let allValues = [Rides, Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn]
 }
