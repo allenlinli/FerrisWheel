@@ -16,8 +16,8 @@ class InfoVCPresentAnimationController: NSObject, UIViewControllerAnimatedTransi
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let containerView = transitionContext.containerView(),
-            let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) else { return }
+        let containerView = transitionContext.containerView()!
+        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
         let finalFrame = transitionContext.finalFrameForViewController(toVC)
         let snapshot = toVC.view.snapshotViewAfterScreenUpdates(true)
         let snapshotContainerView = UIView(frame: originFrame)

@@ -16,7 +16,6 @@ class InfoVCDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        print("destinationFrame:\(destinationFrame)")
         let containerView = transitionContext.containerView()!
         let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
@@ -24,7 +23,6 @@ class InfoVCDismissAnimationController: NSObject, UIViewControllerAnimatedTransi
         let snapshotContainerView = UIView(frame: fromVC.view.frame)
         snapshotContainerView.clipsToBounds = true
 
-        print("snapshotContainerView:\(snapshotContainerView)")
         snapshotContainerView.addSubview(snapshot)
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapshotContainerView)
