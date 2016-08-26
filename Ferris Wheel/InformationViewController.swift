@@ -18,7 +18,7 @@ class InformationViewController: UIViewController {
     var orangeBackgroundView: UIView!
     var menuButton: UIButton!
     var titleLabel: UILabel!
-    var informationViewControllerDelegate: InformationViewControllerDelegate?
+    var menuButtonPressedDelegate: InformationViewControllerDelegate?
     
     // MARK: CONSTANTS
     let topBarHeight = 60.0 as CGFloat
@@ -43,7 +43,7 @@ class InformationViewController: UIViewController {
         let menuButtonImage = UIImage(named: "menubutton")
         menuButton = UIButton(frame: CGRect(x: topBarIndent, y: topBarIndent, width: 50, height: 50))
         menuButton.setImage(menuButtonImage, for: UIControlState())
-        if let delegate = informationViewControllerDelegate {
+        if let delegate = menuButtonPressedDelegate {
             menuButton.addTarget(delegate, action: Selector("menuButtonPressed:"), for: UIControlEvents.touchUpInside)
         }
         
@@ -58,7 +58,7 @@ class InformationViewController: UIViewController {
         view.addSubview(titleLabel)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 }

@@ -111,7 +111,7 @@ class FerrisWheel: UIControl, CarriageDelegate{
         
         let TwoPI = CGFloat(M_PI) * 2
         let choosedCarriageRadian = radianWithPoint(choosedCarriagePoint)
-        let clockWiseRadianFromRight = -choosedCarriageRadian
+        let clockWiseRadianFromRight = -1.0 * choosedCarriageRadian!
         var clockWiseRadianFromTop = clockWiseRadianFromRight + TwoPI/4
         
         if clockWiseRadianFromTop >= CGFloat(0) {
@@ -179,15 +179,13 @@ class FerrisWheel: UIControl, CarriageDelegate{
     }
     
     // MARK: KVO
-    override func observeValue(forKeyPath keyPath: String?,
-                                         of object: Any?,
-                                                  change: [String : Any]?,
-                                                  context: UnsafeMutableRawPointer?)
-    {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let _ = change , context == &myContext {
             for carriage in carriages {
-                let pointOfThisCarriageOnView = wheelImageView.convert(carriahesPoints[carriage.index()], to: self)
-                carriage.center = pointOfThisCarriageOnView
+                DispatchQueue.main.async(execute: { [weak self] in
+                    let pointOfThisCarriageOnView = self?.wheelImageView.convert((self?.carriahesPoints[carriage.index()])!, to: self)
+                    carriage.center = pointOfThisCarriageOnView!
+                    })
             }
         }
     }

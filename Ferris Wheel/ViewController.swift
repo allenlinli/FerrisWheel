@@ -54,8 +54,10 @@ class ViewController: UIViewController {
         wheelRotatingSoundPlayer.numberOfLoops = -1
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .lightContent
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +72,7 @@ class ViewController: UIViewController {
         if segue.identifier == "PresentInformationViewSegueID" {
             let infoVC = segue.destination as! InformationViewController
             infoVC.carriage = choosedCarriage
-            infoVC.informationViewControllerDelegate = self
+            infoVC.menuButtonPressedDelegate = self
             infoVC.transitioningDelegate = self
         }
     }
