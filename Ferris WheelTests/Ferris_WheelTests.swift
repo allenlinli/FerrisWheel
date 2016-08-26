@@ -50,30 +50,30 @@ class Ferris_WheelTests: XCTestCase {
     func testCalculateDistanceFromCenter() {
 
         let centre = ferrisWheel.wheelImageViewCentre
-        let topPoint = CGPointMake(centre.x, 0)
+        let topPoint = CGPoint(x: centre.x, y: 0)
         let dist1 = HelperMethods.calculateDistanceWith(topPoint, point2: centre)
         XCTAssert(dist1 == 160, "\n dist1: \(dist1)")
         
-        let leftPoint = CGPointMake(0, centre.y)
+        let leftPoint = CGPoint(x: 0, y: centre.y)
         let dist2 = HelperMethods.calculateDistanceWith(leftPoint, point2: centre)
         XCTAssert(dist2 == 160, "\n dist2: \(dist2)")
         
-        let rightPoint = CGPointMake(375, centre.y)
+        let rightPoint = CGPoint(x: 375, y: centre.y)
         let dist3 = HelperMethods.calculateDistanceWith(rightPoint, point2: centre)
         XCTAssert(dist3 == 215.0, "\n dist3: \(dist3)")
         
-        let topRightPoint = CGPointMake(centre.x+3, centre.y+4)
+        let topRightPoint = CGPoint(x: centre.x+3, y: centre.y+4)
         let dist4 = HelperMethods.calculateDistanceWith(topRightPoint, point2: centre)
         XCTAssert(dist4 == 5, "\n dist4: \(dist1)")
     }
     
     func testCalculateRadianWithTouchPoint() {
         // Radian * 180 / pi == Degree
-        let topPoint = CGPointMake(ferrisWheel.wheelImageViewCentre.x, 0)
+        let topPoint = CGPoint(x: ferrisWheel.wheelImageViewCentre.x, y: 0)
         let angle1 = ferrisWheel.radianWithTouchPoint(topPoint)
         XCTAssert(angle1 == atan2(1,0), "angle1: \(angle1)")
         
-        let rightPoint = CGPointMake(375, ferrisWheel.wheelImageViewCentre.y)
+        let rightPoint = CGPoint(x: 375, y: ferrisWheel.wheelImageViewCentre.y)
         let angle2 = ferrisWheel.radianWithTouchPoint(rightPoint)
         XCTAssert(Float(angle2) == 0.0, "Float(angle2): \(Float(angle2))")
     }

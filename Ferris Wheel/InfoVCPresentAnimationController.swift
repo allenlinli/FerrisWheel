@@ -11,32 +11,32 @@ import UIKit
 class InfoVCPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     var originFrame :CGRect!
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1.6
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let containerView = transitionContext.containerView()!
-        let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let finalFrame = transitionContext.finalFrameForViewController(toVC)
-        let snapshot = toVC.view.snapshotViewAfterScreenUpdates(true)
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let containerView = transitionContext.containerView
+        let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+        let finalFrame = transitionContext.finalFrame(for: toVC)
+        let snapshot = toVC.view.snapshotView(afterScreenUpdates: true)
         let snapshotContainerView = UIView(frame: originFrame)
         snapshotContainerView.clipsToBounds = true
         
-        toVC.view.hidden = true
+        toVC.view.isHidden = true
         containerView.addSubview(toVC.view)
         containerView.addSubview(snapshotContainerView)
-        snapshotContainerView.addSubview(snapshot)
+        snapshotContainerView.addSubview(snapshot!)
         
-        let duration = transitionDuration(transitionContext)
-        UIView.animateWithDuration(duration, animations: {
+        let duration = transitionDuration(using: transitionContext)
+        UIView.animate(withDuration: duration, animations: {
             
             snapshotContainerView.frame = finalFrame
             
             }) { _ in
-                toVC.view.hidden = false
+                toVC.view.isHidden = false
                 snapshotContainerView.removeFromSuperview()
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
 }

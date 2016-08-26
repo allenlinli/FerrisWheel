@@ -10,8 +10,8 @@ import UIKit
 
 extension FerrisWheel {
     // MARK: UIControl Delegates
-    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let beginTouchPoint = touch.locationInView(self)
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let beginTouchPoint = touch.location(in: self)
         let distanceFromCentre = HelperMethods.calculateDistanceWith(beginTouchPoint, point2: wheelImageViewCentre)
         let WheelOutterRadius = CGFloat(130.0)
         if distanceFromCentre > WheelOutterRadius { return false }
@@ -21,28 +21,28 @@ extension FerrisWheel {
         return true
     }
     
-    override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let touchPoint = touch.locationInView(self)
+    override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let touchPoint = touch.location(in: self)
         
         let radianDifferenceFromBeginTouchPoint = radianWithPoint(touchPoint) - radianOfBeginTouchPoint!
         
-        wheelImageView.transform = CGAffineTransformRotate(startTransform, -radianDifferenceFromBeginTouchPoint);
+        wheelImageView.transform = startTransform.rotated(by: -radianDifferenceFromBeginTouchPoint);
         
         lastRadianFromBeginTouchPoint = radianDifferenceFromBeginTouchPoint
         return true
     }
     
-    override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
+    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         didStopRotate()
         radianOfFirstCarriage -= lastRadianFromBeginTouchPoint
     }
     
-    override func cancelTrackingWithEvent(event: UIEvent?) {
+    override func cancelTracking(with event: UIEvent?) {
         didStopRotate()
         radianOfFirstCarriage -= lastRadianFromBeginTouchPoint
     }
     
-    func carriageDidTapped(carriage: Carriage?) {
+    func carriageDidTapped(_ carriage: Carriage?) {
         rotateCarriageToTop(carriage)
     }
 }

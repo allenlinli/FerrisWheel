@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InformationViewControllerDelegate: class{
-    func menuButtonPressed(sender: InformationViewController?)
+    func menuButtonPressed(_ sender: InformationViewController?)
 }
 
 class InformationViewController: UIViewController {
@@ -34,22 +34,22 @@ class InformationViewController: UIViewController {
         whiteBackgroundView = UIView(frame: CGRect(x: 0, y: topBarHeight, width: view.frame.width, height: view.frame.height-topBarHeight))
         orangeBackgroundView = UIView(frame: CGRect(x: 0, y: topBarHeight, width: view.frame.width, height: view.frame.height-topBarHeight))
         
-        whiteBackgroundView.transform = CGAffineTransformMakeRotation(rotateBackgroundViewRadian)
-        orangeBackgroundView.transform = CGAffineTransformMakeRotation(CGFloat(-rotateBackgroundViewRadian))
+        whiteBackgroundView.transform = CGAffineTransform(rotationAngle: rotateBackgroundViewRadian)
+        orangeBackgroundView.transform = CGAffineTransform(rotationAngle: CGFloat(-rotateBackgroundViewRadian))
         
-        whiteBackgroundView.backgroundColor = UIColor.whiteColor()
+        whiteBackgroundView.backgroundColor = UIColor.white
         orangeBackgroundView.backgroundColor = orangeBackgroundViewColor
         
         let menuButtonImage = UIImage(named: "menubutton")
         menuButton = UIButton(frame: CGRect(x: topBarIndent, y: topBarIndent, width: 50, height: 50))
-        menuButton.setImage(menuButtonImage, forState: UIControlState.Normal)
+        menuButton.setImage(menuButtonImage, for: UIControlState())
         if let delegate = informationViewControllerDelegate {
-            menuButton.addTarget(delegate, action: Selector("menuButtonPressed:"), forControlEvents: UIControlEvents.TouchUpInside)
+            menuButton.addTarget(delegate, action: Selector("menuButtonPressed:"), for: UIControlEvents.touchUpInside)
         }
         
         titleLabel = UILabel(frame: CGRect(x: topBarIndent, y: topBarIndent, width: view.frame.width-topBarIndent*2, height: topBarHeight))
         titleLabel.text = "Show Information"
-        titleLabel.textAlignment = NSTextAlignment.Right
+        titleLabel.textAlignment = NSTextAlignment.right
         titleLabel.textColor = titleLabelTextColor
         
         view.addSubview(orangeBackgroundView)
@@ -59,6 +59,6 @@ class InformationViewController: UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        return .lightContent
     }
 }
