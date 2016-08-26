@@ -13,7 +13,7 @@ import CoreGraphics
 protocol FerrisWheelDelegate: class {
     func ferrisWheelDidStartRotate()
     func ferrisWheelDidStopRotate()
-    func openCarriage(carriage: Carriage!)
+    func openCarriage(_ carriage: Carriage!)
 }
 
 let WheelImageName: String = "wheel"
@@ -78,7 +78,7 @@ class FerrisWheel: UIControl, CarriageDelegate{
         
         wheelImageView.addObserver(self,
                              forKeyPath: "transform",
-                             options: .New,
+                             options: .new,
                              context: &myContext)
     }
     
@@ -95,23 +95,23 @@ class FerrisWheel: UIControl, CarriageDelegate{
     }
     
     // MARK: About Rotate
-    var rotateTimer: NSTimer?
+    var rotateTimer: Timer?
     var radianDifferenceToRotate: CGFloat?
     var rotatingRadianAmount: CGFloat? = 0
     //>> radianPerTimeInterval=0.03, rotatingTimeInterval =0.03
     let radianPerTimeInterval: CGFloat = 0.02 //Rotating Speed
     let rotatingTimeInterval: Double = 0.000003
     var choosedCarriage: Carriage!
-    func rotateCarriageToTop(carriage: Carriage!) {
-        userInteractionEnabled = false
+    func rotateCarriageToTop(_ carriage: Carriage!) {
+        isUserInteractionEnabled = false
         rotatingRadianAmount = 0
         choosedCarriage = carriage
         didStartRotate()
-        let choosedCarriagePoint = wheelImageView.convertPoint(carriahesPoints[choosedCarriage!.index()], toView: self)
+        let choosedCarriagePoint = wheelImageView.convert(carriahesPoints[choosedCarriage!.index()], to: self)
         
         let TwoPI = CGFloat(M_PI) * 2
         let choosedCarriageRadian = radianWithPoint(choosedCarriagePoint)
-        let clockWiseRadianFromRight = -choosedCarriageRadian
+        let clockWiseRadianFromRight = -1.0 * choosedCarriageRadian!
         var clockWiseRadianFromTop = clockWiseRadianFromRight + TwoPI/4
         
         if clockWiseRadianFromTop >= CGFloat(0) {
@@ -128,12 +128,12 @@ class FerrisWheel: UIControl, CarriageDelegate{
         let positiveClockWiseRadianFromTop = clockWiseRadianFromTop
         radianDifferenceToRotate = CGFloat(M_PI) * 2 - positiveClockWiseRadianFromTop
     
-        rotateTimer = NSTimer.scheduledTimerWithTimeInterval(rotatingTimeInterval, target: self, selector: #selector(rotateForATimeInterval), userInfo: nil, repeats: true)
+        rotateTimer = Timer.scheduledTimer(timeInterval: rotatingTimeInterval, target: self, selector: #selector(rotateForATimeInterval), userInfo: nil, repeats: true)
         rotateTimer!.fire()
     }
     
     func rotateForATimeInterval() {
-        wheelImageView.transform = CGAffineTransformRotate(startTransform,  rotatingRadianAmount!);
+        wheelImageView.transform = startTransform.rotated(by: rotatingRadianAmount!);
         
         rotatingRadianAmount! += radianPerTimeInterval
         let shouldStop = radianDifferenceToRotate! - rotatingRadianAmount! <= 0
@@ -149,7 +149,7 @@ class FerrisWheel: UIControl, CarriageDelegate{
             rotateTimer = nil
             ferrisWheelDelegate?.openCarriage(choosedCarriage)
             choosedCarriage = nil
-            userInteractionEnabled = true
+            isUserInteractionEnabled = true
         }
     }
     
@@ -165,29 +165,27 @@ class FerrisWheel: UIControl, CarriageDelegate{
     
     
     // MARK: About Radian
-    func radianWithPoint(point: CGPoint) -> CGFloat! {
+    func radianWithPoint(_ point: CGPoint) -> CGFloat! {
         let dx = point.x - wheelImageViewCentre.x
         let dy = wheelImageViewCentre.y - point.y
         return atan2(dy,dx)
     }
     
     // MARK: About Point and Distance
-    func pointWithRadian(radian: CGFloat) -> CGPoint {
+    func pointWithRadian(_ radian: CGFloat) -> CGPoint {
         let dxFromWheelCentre = radius * cos(radian)
         let dyFromWheelCentre = radius * sin(radian)
         return CGPoint(x:wheelImageViewCentre.x + dxFromWheelCentre, y: wheelImageViewCentre.y + dyFromWheelCentre)
     }
     
     // MARK: KVO
-    override func observeValueForKeyPath(keyPath: String?,
-                                         ofObject object: AnyObject?,
-                                                  change: [String : AnyObject]?,
-                                                  context: UnsafeMutablePointer<Void>)
-    {
-        if let _ = change where context == &myContext {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let _ = change , context == &myContext {
             for carriage in carriages {
-                let pointOfThisCarriageOnView = wheelImageView.convertPoint(carriahesPoints[carriage.index()], toView: self)
-                carriage.center = pointOfThisCarriageOnView
+                DispatchQueue.main.async(execute: { [weak self] in
+                    let pointOfThisCarriageOnView = self?.wheelImageView.convert((self?.carriahesPoints[carriage.index()])!, to: self)
+                    carriage.center = pointOfThisCarriageOnView!
+                    })
             }
         }
     }

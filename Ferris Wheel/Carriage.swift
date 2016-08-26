@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol CarriageDelegate: class {
-    func carriageDidTapped(sender: Carriage?)
+    func carriageDidTapped(_ sender: Carriage?)
 }
 
 class Carriage: UIControl{
@@ -27,17 +27,17 @@ class Carriage: UIControl{
         let carriageImage = UIImage(named:type.getCarriageImageName())
         carriageImageView = UIImageView(image: carriageImage)
         titleLabel = UILabel(frame: CGRect(origin: CGPoint(x: 0,y: frame.height-4), size: TitleLabelSize))
-        titleLabel.backgroundColor = UIColor.blackColor()
+        titleLabel.backgroundColor = UIColor.black
         titleLabel.text = type.getCarriageTitle()
         titleLabel.textColor = UIColor(red: 125.0/255.0, green: 125.0/255.0, blue: 125.0/255.0, alpha: 1)
-        titleLabel.font = UIFont.systemFontOfSize(8.0, weight: TitleLabelSize.width)
-        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.font = UIFont.systemFont(ofSize: 8.0, weight: TitleLabelSize.width)
+        titleLabel.textAlignment = NSTextAlignment.center
         
         super.init(frame: frame)
         addSubview(carriageImageView)
         carriageImageView.addSubview(titleLabel)
         
-        addTarget(self, action: #selector(Carriage.carriageTapped), forControlEvents: UIControlEvents.TouchDown)
+        addTarget(self, action: #selector(Carriage.carriageTapped), for: UIControlEvents.touchDown)
     }
     
     override init(frame: CGRect) {
@@ -58,52 +58,52 @@ class Carriage: UIControl{
 }
 
 public enum CarriageType: Int {
-    case Rides = 0
-    case Showbags
-    case Plan
-    case FoodDrink
-    case Shopping
-    case LifeStyle
-    case Tickets
-    case Search
-    case Info
-    case Win
-    case Maps
-    case WhatsOn
+    case rides = 0
+    case showbags
+    case plan
+    case foodDrink
+    case shopping
+    case lifeStyle
+    case tickets
+    case search
+    case info
+    case win
+    case maps
+    case whatsOn
     
     public func getCarriageTitle() -> String {
         switch self {
-        case Rides: return "Rides"
-        case Showbags: return "Showbags"
-        case Plan: return "Plan"
-        case FoodDrink: return "Food & Drink"
-        case Shopping: return "Shopping"
-        case LifeStyle: return "LifeStyle"
-        case Tickets: return "Tickets"
-        case Search: return "Search"
-        case Info: return "Info"
-        case Win: return "Win"
-        case Maps: return "Maps"
-        case WhatsOn: return "What's On"
+        case .rides: return "Rides"
+        case .showbags: return "Showbags"
+        case .plan: return "Plan"
+        case .foodDrink: return "Food & Drink"
+        case .shopping: return "Shopping"
+        case .lifeStyle: return "LifeStyle"
+        case .tickets: return "Tickets"
+        case .search: return "Search"
+        case .info: return "Info"
+        case .win: return "Win"
+        case .maps: return "Maps"
+        case .whatsOn: return "What's On"
         }
     }
     
     func getCarriageImageName() -> String {
         switch self {
-        case Rides: return "Rides"
-        case Showbags: return "Showbags"
-        case Plan: return "Plan"
-        case FoodDrink: return "FoodDrink"
-        case Shopping: return "Shopping"
-        case LifeStyle: return "Shows"
-        case Tickets: return "Tickets"
-        case Search: return "Search"
-        case Info: return "About"
-        case Win: return "Win"
-        case Maps: return "Maps"
-        case WhatsOn: return "Program"
+        case .rides: return "Rides"
+        case .showbags: return "Showbags"
+        case .plan: return "Plan"
+        case .foodDrink: return "FoodDrink"
+        case .shopping: return "Shopping"
+        case .lifeStyle: return "Shows"
+        case .tickets: return "Tickets"
+        case .search: return "Search"
+        case .info: return "About"
+        case .win: return "Win"
+        case .maps: return "Maps"
+        case .whatsOn: return "Program"
         }
     }
     
-    public static let allValues = [Rides, Showbags, Plan,FoodDrink,Shopping,LifeStyle,Tickets,Search,Info,Win,Maps,WhatsOn]
+    public static let allValues = [rides, showbags, plan,foodDrink,shopping,lifeStyle,tickets,search,info,win,maps,whatsOn]
 }
